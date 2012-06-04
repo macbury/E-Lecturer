@@ -1,0 +1,55 @@
+!!! 5
+%html(lang="pl")
+  %head
+    %meta(charset="utf-8")
+    %meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    %title= content_for?(:title) ? yield(:title) : "E-Wykładowca"
+    = csrf_meta_tags
+    
+    = stylesheet_link_tag "application", :media => "all"
+
+  %body{ class: ["controller_#{controller.controller_name}", "action_#{controller.action_name}"].join(" ") }
+    .navbar.navbar-fixed-top
+      .navbar-inner
+        .container
+          %a.btn.btn-navbar(data-toggle="collapse" data-target=".nav-collapse")
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+          %a.brand.pull-left(href="#") 
+            %i.icon-leaf
+            E-Wykładowca
+          .nav-collapse
+            %form.navbar-search.pull-left
+              %input.search-query( type="text" placeholder="Szukaj..." )
+            %ul.nav.pull-right              
+              %li.dropdown
+                = link_to '#', class: "dropdown-toggle", data: { toggle: "dropdown" } do
+                  Profil
+                  %b.caret
+                %ul.dropdown-menu
+                  %li= link_to "Wyloguj się", destroy_user_session_path, method: :delete
+            
+
+    .container
+      .row
+        .span12
+          .page-header.page-title
+            = link_to '#', class: "btn pull-right" do
+              %i.icon-eye-open
+              Obserwuj
+            %h2 
+              .avatar.pull-left(title="Tadeusz Grabiński")
+                .cover
+              Tadeusz Grabiński
+          .subnav
+            %ul.nav.nav-pills.columns5
+              %li.active= link_to "Tablica", '#'
+              %li= link_to "Informacje podstawowe", '#'
+              %li= link_to "Wykłady", '#'
+              %li= link_to "Pliki", '#'
+              %li= link_to "Kontakt", '#'
+      = yield
+
+    = javascript_include_tag "https://maps.googleapis.com/maps/api/js?sensor=false"
+    = javascript_include_tag "application"

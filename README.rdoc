@@ -1,0 +1,21 @@
+
+user
+  email:string
+  password:string
+  permalink:string
+  first_name:string
+  last_name:string
+
+manager
+  user_id:integer
+  university_id:integer
+  mode:integer
+    0 - Lecturer
+    1 - Owner
+    2 - Lecture+Owner
+    3 - Manager
+
+university
+  permalink:string
+  name:string
+  address:string

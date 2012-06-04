@@ -1,0 +1,1 @@
+thin stop; thin start --socket /home/projects/electurer/tmp/socket/thin.sock -d
