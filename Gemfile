@@ -17,6 +17,8 @@ end
 
 group :other do
   gem "yettings"
+  gem 'redis-store'
+  gem "thin"
 end
 
 group :views do
@@ -35,11 +37,9 @@ group :assets do
   gem 'compass-rails'
   gem 'uglifier', '>= 1.0.3'
   gem 'quiet_assets'
+  gem 'jquery-rails'
   gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
 end
-
-gem 'jquery-rails'
-gem "thin"
 
 group :development, :test do
   gem 'rspec-rails'

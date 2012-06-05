@@ -8,6 +8,10 @@ class User < ActiveRecord::Base
   attr_protected          :mode
 
   has_and_belongs_to_many :titles
+  has_many                :friendships
+  has_many                :friends, through: :friendships
+  has_many                :inverse_friendships, class_name: "Friendship", foreign_key: "friend_id"
+  has_many                :inverse_friends, through: :inverse_friendships, source: :user
 
   validates               :first_name, :last_name, :screen_name, presence: true, if: :lecturer?
   validates               :screen_name, uniqueness: true, format: /^[a-z\.\-0-9]+$/, length: { in: 3..18 }, if: :lecturer?

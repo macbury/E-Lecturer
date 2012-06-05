@@ -3,6 +3,7 @@ require 'spec_helper'
 
 describe User do
   it { should have_and_belong_to_many(:titles) }
+  it { should have_many(:friends).through(:friendships) }
   
   it "should not allow to change mode through mass assigment" do
     User.new.new?.should be(true)
