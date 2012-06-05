@@ -33,7 +33,8 @@ group :assets do
   gem 'compass-rails'
   gem 'uglifier', '>= 1.0.3'
   gem 'quiet_assets'
-  gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
+  gem 'chosen-rails'
+  gem 'twitter-bootstrap-rails', git: 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
 end
 
 gem 'jquery-rails'

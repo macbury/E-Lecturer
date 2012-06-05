@@ -22,22 +22,20 @@
           .nav-collapse
             %form.navbar-search.pull-left
               %input.search-query( type="text" placeholder="Szukaj..." )
-            %ul.nav.pull-right              
-              %li.dropdown
-                = link_to '#', class: "dropdown-toggle", data: { toggle: "dropdown" } do
-                  Profil
-                  %b.caret
-                %ul.dropdown-menu
-                  %li= link_to "Wyloguj się", destroy_user_session_path, method: :delete
-            
-
+            %ul.nav.pull-right
+              %li= link_to "Utwórz konto", '#', style: "color: #48FF00"
+              %li= link_to "Przeglądaj", '#'        
+              %li= link_to "Oferta", '#'
+              %li= link_to "Logowanie", '#'
     .container
       .row
         .span12
           .page-header.page-title
-            = link_to '#', class: "btn pull-right" do
-              %i.icon-eye-open
-              Obserwuj
+            .watch
+              = link_to '#', class: "btn" do
+                %i.icon-eye-open
+                Obserwuj
+
             %h2 
               .avatar.pull-left(title="Tadeusz Grabiński")
                 .cover

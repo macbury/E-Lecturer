@@ -11,7 +11,23 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120603155500) do
+ActiveRecord::Schema.define(:version => 20120604222551) do
+
+  create_table "cities", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "universities", :force => true do |t|
+    t.string   "name"
+    t.integer  "city_id",    :null => false
+    t.string   "permalink"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "universities", ["city_id"], :name => "index_universities_on_city_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false

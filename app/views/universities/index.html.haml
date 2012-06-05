@@ -1,0 +1,23 @@
+%h1 Listing universities
+
+%table
+  %tr
+    %th Name
+    %th City
+    %th Permalink
+    %th
+    %th
+    %th
+
+  - @universities.each do |university|
+    %tr
+      %td= university.name
+      %td= university.city_id
+      %td= university.permalink
+      %td= link_to 'Show', university
+      %td= link_to 'Edit', edit_university_path(university)
+      %td= link_to 'Destroy', university, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New University', new_university_path
