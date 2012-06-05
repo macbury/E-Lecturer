@@ -44,13 +44,17 @@ gem "thin"
 group :development, :test do
   gem 'rspec-rails'
   gem "factory_girl_rails"
+  gem 'sextant'
+  gem 'annotator'
+end
+
+group "test" do
   gem 'database_cleaner'
   gem 'shoulda-matchers'
   gem "nyan-cat-formatter"
-  gem 'sextant'
-  gem 'annotator'
   gem 'guard-rspec'
   gem 'guard-livereload'
   gem "guard-spork"
   gem "spork"
+  gem "ruby_gntp"
 end
