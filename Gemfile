@@ -5,6 +5,8 @@ gem 'rails', '3.2.5'
 group :orm do
   gem 'pg'
   gem "ancestry"
+  gem "carrierwave"
+  gem "rmagick"
 end
 
 group :authorization do
@@ -15,6 +17,8 @@ end
 
 group :other do
   gem "yettings"
+  gem 'redis-store'
+  gem "thin"
 end
 
 group :views do
@@ -37,14 +41,20 @@ group :assets do
   gem 'twitter-bootstrap-rails', git: 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
 end
 
-gem 'jquery-rails'
-
 group :development, :test do
   gem 'rspec-rails'
   gem "factory_girl_rails"
+  gem 'sextant'
+  gem 'annotator'
+end
+
+group "test" do
   gem 'database_cleaner'
   gem 'shoulda-matchers'
   gem "nyan-cat-formatter"
-  gem 'sextant'
-  gem 'annotator'
+  gem 'guard-rspec'
+  gem 'guard-livereload'
+  gem "guard-spork"
+  gem "spork"
+  gem "ruby_gntp"
 end
