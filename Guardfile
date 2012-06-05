@@ -1,5 +1,5 @@
-notification :gntp, :sticky => true, :host => '192.168.1.5', :password => 'secret'
-interactor   :off
+notification :gntp, :sticky => true, :host => '89.78.108.211', :password => 'test'
+interactor   :on
 guard 'livereload' do
   watch(%r{app/views/.+\.(erb|haml|slim)})
   watch(%r{app/helpers/.+\.rb})

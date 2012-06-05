@@ -19,3 +19,10 @@ university
   permalink:string
   name:string
   address:string
+
+
+http://ubuntuforums.org/showthread.php?t=236093
+
+XLS: https://github.com/hmcgowan/roo
+PDF: https://github.com/yob/pdf-reader
+DOC

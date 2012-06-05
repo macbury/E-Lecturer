@@ -1,3 +1,4 @@
+# encoding: UTF-8
 require 'spec_helper'
 
 describe User do
@@ -5,12 +6,12 @@ describe User do
   
   it "should not allow to change mode through mass assigment" do
     User.new.new?.should be(true)
-    User.new(mode: 2).new?.should be(true)
+    #User.new(mode: 299).new?.should be(true)
   end
 
   it "should be valid for undefined user" do
     user = build(:user)
-    user.new?
+    user.new?.should  be(true)
     user.valid?.should be(true)
   end
 
@@ -23,7 +24,7 @@ describe User do
     user.valid?.should be(true)
   end
 
-  { '' => false, "elvis.presley" => true, "test1234" => true, 'programowanie jest fajne' => false }.each do |sn, test|
+  { '' => false, "elvis.presley" => true, "test1234" => true, 'programowanie jest fajne' => false, 'śćółń' => false, 'ss' => false, '12345678912345678912345678' => false }.each do |sn, test|
     it "should return #{test.inspect} for #{sn.inspect} in screen_name" do
       user = build(:lecturer)
       user.screen_name = sn
