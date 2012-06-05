@@ -11,7 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120603155500) do
+ActiveRecord::Schema.define(:version => 20120605091712) do
+
+  create_table "titles", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "titles_users", :id => false, :force => true do |t|
+    t.integer "user_id"
+    t.integer "title_id"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -33,6 +44,13 @@ ActiveRecord::Schema.define(:version => 20120603155500) do
     t.datetime "locked_at"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "screen_name"
+    t.string   "phone"
+    t.string   "twitter"
+    t.string   "facebook"
+    t.integer  "mode",                   :default => 0
   end
 
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true

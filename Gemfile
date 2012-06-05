@@ -5,6 +5,8 @@ gem 'rails', '3.2.5'
 group :orm do
   gem 'pg'
   gem "ancestry"
+  gem "carrierwave"
+  gem "rmagick"
 end
 
 group :authorization do
@@ -37,6 +39,7 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem "thin"
 
 group :development, :test do
   gem 'rspec-rails'
@@ -46,4 +49,8 @@ group :development, :test do
   gem "nyan-cat-formatter"
   gem 'sextant'
   gem 'annotator'
+  gem 'guard-rspec'
+  gem 'guard-livereload'
+  gem "guard-spork"
+  gem "spork"
 end
