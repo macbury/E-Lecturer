@@ -1,4 +1,4 @@
-notification :gntp, :sticky => true, :host => '89.78.108.211', :password => 'test'
+notification :gntp, :sticky => true, :host => '192.168.0.108'
 interactor   :on
 guard 'livereload' do
   watch(%r{app/views/.+\.(erb|haml|slim)})
@@ -9,7 +9,7 @@ guard 'livereload' do
   watch(%r{(app|vendor)/assets/\w+/(.+\.(css|js|html)).*})  { |m| "/assets/#{m[2]}" }
 end
 
-guard 'spork', :cucumber_env => { 'RAILS_ENV' => 'test' }, :rspec_env => { 'RAILS_ENV' => 'test' }, :wait => 30 do
+guard 'spork', :cucumber_env => { 'RAILS_ENV' => 'test' }, :rspec_env => { 'RAILS_ENV' => 'test' }, :wait => 70 do
   watch('config/application.rb')
   watch('config/environment.rb')
   watch(%r{^config/environments/.+\.rb$})
@@ -21,7 +21,7 @@ guard 'spork', :cucumber_env => { 'RAILS_ENV' => 'test' }, :rspec_env => { 'RAIL
   watch(%r{features/support/}) { :cucumber }
 end
 
-guard 'rspec', :version => 2, :cli => "--drb", :all_on_start => false, :all_after_pass => false do
+guard 'rspec', :version => 2, :cli => "--drb", :all_on_start => false, :all_after_pass => false, :wait => 70 do
   watch(%r{^spec/.+_spec\.rb$})
   watch(%r{^lib/(.+)\.rb$})     { |m| "spec/lib/#{m[1]}_spec.rb" }
   watch('spec/spec_helper.rb')  { "spec" }

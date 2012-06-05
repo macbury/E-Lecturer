@@ -23,30 +23,13 @@
             %form.navbar-search.pull-left
               %input.search-query( type="text" placeholder="Szukaj..." )
             %ul.nav.pull-right
-              %li= link_to "Utwórz konto", '#', style: "color: #48FF00"
+              %li= link_to t("controllers.sign_up", default: "Utwórz konto"), new_user_registration_path, style: "color: #48FF00"
               %li= link_to "Przeglądaj", '#'        
               %li= link_to "Oferta", '#'
-              %li= link_to "Logowanie", '#'
+              %li= link_to t("controllers.sign_in", default: "Zaloguj się"), new_user_session_path
     .container
-      .row
-        .span12
-          .page-header.page-title
-            .watch
-              = link_to '#', class: "btn" do
-                %i.icon-eye-open
-                Obserwuj
-
-            %h2 
-              .avatar.pull-left(title="Tadeusz Grabiński")
-                .cover
-              Tadeusz Grabiński
-          .subnav
-            %ul.nav.nav-pills.columns5
-              %li.active= link_to "Tablica", '#'
-              %li= link_to "Informacje podstawowe", '#'
-              %li= link_to "Wykłady", '#'
-              %li= link_to "Pliki", '#'
-              %li= link_to "Kontakt", '#'
+      - flash.each do |type, msg|
+        .flash.alert{ class: "alert-#{type}" }= msg
       = yield
 
     = javascript_include_tag "https://maps.googleapis.com/maps/api/js?sensor=false"

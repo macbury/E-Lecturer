@@ -1,15 +1,19 @@
-%p#notice= notice
+.row
+        .span12
+          .page-header.page-title
+            .watch
+              = link_to '#', class: "btn" do
+                %i.icon-eye-open
+                Obserwuj
 
-%p
-  %b Name:
-  = @university.name
-%p
-  %b City:
-  = @university.city_id
-%p
-  %b Permalink:
-  = @university.permalink
-
-= link_to 'Edit', edit_university_path(@university)
-\|
-= link_to 'Back', universities_path
+            %h2 
+              .avatar.pull-left(title="Tadeusz Grabiński")
+                .cover
+              Tadeusz Grabiński
+          .subnav
+            %ul.nav.nav-pills.columns5
+              %li.active= link_to "Tablica", '#'
+              %li= link_to "Informacje podstawowe", '#'
+              %li= link_to "Wykłady", '#'
+              %li= link_to "Pliki", '#'
+              %li= link_to "Kontakt", '#'

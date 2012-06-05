@@ -1,12 +1,11 @@
 pl:
-  importers:
-    pekao24: "Pekao S.A."
-  mongoid:
-    errors:
-      messages:
-        document_not_found: "Nie znaleziono"
-  entries:
-    unpublished: Oczekujący
+  simple_form:
+    labels:
+      user:
+        email: 'E-Mail'
+        password: 'Hasło'
+        password: 'Powtórz hasło'
+        remember_me: "Zapamiętaj mnie"
   views:
     pagination:
       next: "Dalej"

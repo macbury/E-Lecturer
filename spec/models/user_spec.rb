@@ -7,7 +7,6 @@ describe User do
   
   it "should not allow to change mode through mass assigment" do
     User.new.new?.should be(true)
-    #User.new(mode: 299).new?.should be(true)
   end
 
   it "should be valid for undefined user" do
@@ -30,6 +29,11 @@ describe User do
       user = build(:lecturer)
       user.screen_name = sn
       user.valid?.should be(test)
+      if test
+        user.errors[:screen_name].should eq([])
+      else
+        user.errors[:screen_name].should_not eq([])
+      end
     end
   end
 end
