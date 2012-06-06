@@ -52,8 +52,8 @@ Electurer::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-
-  match "/:user_name" => "profiles#show"
+  match "/dashboard" => "dashboard#index", as: :dashboard
+  match "/:screen_name" => "profiles#show", as: :profile
 
   root to: 'welcome#index'
 
