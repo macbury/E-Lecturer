@@ -4,7 +4,7 @@ pl:
       user:
         email: 'E-Mail'
         password: 'Hasło'
-        password: 'Powtórz hasło'
+        password_confirmation: 'Powtórz hasło'
         remember_me: "Zapamiętaj mnie"
   views:
     pagination:

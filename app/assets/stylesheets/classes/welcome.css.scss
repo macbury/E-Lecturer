@@ -1,0 +1,44 @@
+.masthead {
+  padding-top: 70px;
+  margin-bottom: 72px;
+  h1 {
+    margin-bottom: 9px;
+    font-size: 81px;
+    font-weight: bold;
+    letter-spacing: -1px;
+    line-height: 1;
+    text-align: center;
+    margin-bottom: 18px;
+  }
+
+  p {
+    margin-left: 5%;
+    margin-right: 5%;
+    font-size: 30px;
+    line-height: 36px;
+    text-align: center;
+    margin-bottom: 18px;
+    font-weight: 300;
+  }
+}
+hr.soften {
+  height: 1px;
+margin: 54px 0;
+background-image: -webkit-linear-gradient(left, 
+transparent, 
+rgba(0, 0, 0, .1), 
+transparent);
+background-image: -moz-linear-gradient(left, 
+transparent, 
+rgba(0, 0, 0, .1), 
+transparent);
+background-image: -ms-linear-gradient(left, 
+transparent, 
+rgba(0, 0, 0, .1), 
+transparent);
+background-image: -o-linear-gradient(left, 
+transparent, 
+rgba(0, 0, 0, .1), 
+transparent);
+border: 0;
+}
