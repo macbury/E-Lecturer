@@ -1,15 +1,10 @@
-<h2>Resend confirmation instructions</h2>
+.row
+  .span8
+    .page-header
+      %h2= tt("page-header.h2", "Wyślij ponownie potwierdzenie aktywacji konta")
 
-<%= simple_form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post }) do |f| %>
-  <%= f.error_notification %>
-
-  <div class="inputs">
-    <%= f.input :email, :required => true %>
-  </div>
-
-  <div class="actions">
-    <%= f.button :submit, "Resend confirmation instructions" %>
-  </div>
-<% end %>
-
-<%= render :partial => "devise/shared/links" %>
+    = simple_form_for(resource, validate: true, as: resource_name, url: confirmation_path(resource_name), html: { class: "form-horizontal", method: :post }) do |f|
+      = f.input :email, :required => true, :autofocus => true
+      
+      .form-actions= f.button :submit, tt("form.submit", "Wyślij"), class: "btn btn-primary btn-large", id: "create_user"
+  .span4= render :partial => "devise/shared/links"
