@@ -22,33 +22,14 @@
           .nav-collapse
             %form.navbar-search.pull-left
               %input.search-query( type="text" placeholder="Szukaj..." )
-            %ul.nav.pull-right              
-              %li.dropdown
-                = link_to '#', class: "dropdown-toggle", data: { toggle: "dropdown" } do
-                  Profil
-                  %b.caret
-                %ul.dropdown-menu
-                  %li= link_to "Wyloguj się", destroy_user_session_path, method: :delete
-            
-
+            %ul.nav.pull-right
+              %li= link_to t("controllers.sign_up", default: "Utwórz konto"), new_user_registration_path, style: "color: #48FF00"
+              %li= link_to "Przeglądaj", '#'        
+              %li= link_to "Oferta", '#'
+              %li= link_to t("controllers.sign_in", default: "Zaloguj się"), new_user_session_path
     .container
-      .row
-        .span12
-          .page-header.page-title
-            = link_to '#', class: "btn pull-right" do
-              %i.icon-eye-open
-              Obserwuj
-            %h2 
-              .avatar.pull-left(title="Tadeusz Grabiński")
-                .cover
-              Tadeusz Grabiński
-          .subnav
-            %ul.nav.nav-pills.columns5
-              %li.active= link_to "Tablica", '#'
-              %li= link_to "Informacje podstawowe", '#'
-              %li= link_to "Wykłady", '#'
-              %li= link_to "Pliki", '#'
-              %li= link_to "Kontakt", '#'
+      - flash.each do |type, msg|
+        .flash.alert{ class: "alert-#{type}" }= msg
       = yield
 
     = javascript_include_tag "https://maps.googleapis.com/maps/api/js?sensor=false"

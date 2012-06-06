@@ -1,0 +1,8 @@
+.row
+  .span8
+    .page-header
+      %h2= tt("page-header.h2", "Wyślij ponownie link odblokowujący")
+    = simple_form_for(resource, :as => resource_name, :url => unlock_path(resource_name), html: { class: "form-horizontal", method: :post }) do |f|
+      = f.input :email, :required => false, :autofocus => true
+      .form-actions= f.button :submit, tt("form.submit", "Wyślij!"), class: "btn btn-primary btn-large"
+  .span4= render :partial => "devise/shared/links"

@@ -11,13 +11,12 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120605151832) do
+ActiveRecord::Schema.define(:version => 20120605175131) do
 
-  create_table "followers", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "follower_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+  create_table "cities", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "friendships", :force => true do |t|
@@ -47,6 +46,16 @@ ActiveRecord::Schema.define(:version => 20120605151832) do
     t.integer "user_id"
     t.integer "title_id"
   end
+
+  create_table "universities", :force => true do |t|
+    t.string   "name"
+    t.integer  "city_id",    :null => false
+    t.string   "permalink"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "universities", ["city_id"], :name => "index_universities_on_city_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false

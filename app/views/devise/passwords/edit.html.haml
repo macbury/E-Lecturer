@@ -1,0 +1,12 @@
+.row
+  .span8
+    .page-header
+      %h2
+        = tt("page-header.h2", "Zapomniałeś hasła?")
+        %small= tt("page-header.small", "zmień je teraz!")
+    = simple_form_for(resource, :as => resource_name, :url => password_path(resource_name), html: { class: "form-horizontal", method: :put }) do |f|
+      = f.input :reset_password_token, :as => :hidden
+      = f.input :password, :required => false, :autofocus => true
+      = f.input :password_confirmation, :required => false, :autofocus => true
+      .form-actions= f.button :submit, tt("form.submit2", "Zmień moje hasło"), class: "btn btn-primary btn-large"
+  .span4= render :partial => "devise/shared/links"

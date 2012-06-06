@@ -1,0 +1,10 @@
+= simple_form_for(@university) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :name
+    = f.input :city_id
+    = f.input :permalink
+
+  .form-actions
+    = f.button :submit

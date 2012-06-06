@@ -37,8 +37,9 @@ group :assets do
   gem 'compass-rails'
   gem 'uglifier', '>= 1.0.3'
   gem 'quiet_assets'
-  gem 'jquery-rails'
-  gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
+  gem 'chosen-rails'
+  gem 'client_side_validations'
+  gem 'twitter-bootstrap-rails', git: 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
 end
 
 group :development, :test do
@@ -46,6 +47,7 @@ group :development, :test do
   gem "factory_girl_rails"
   gem 'sextant'
   gem 'annotator'
+  gem 'rack-livereload' 
 end
 
 group "test" do

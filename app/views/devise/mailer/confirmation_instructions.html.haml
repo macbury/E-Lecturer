@@ -1,0 +1,5 @@
+%p Witaj #{@resource.email}!
+
+%p Aby aktywować swoje konto kliknij w link poniżej:
+
+%p= link_to 'Aktywuj konto!', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token)
