@@ -23,13 +23,31 @@
             %form.navbar-search.pull-left
               %input.search-query( type="text" placeholder="Szukaj..." )
             %ul.nav.pull-right
-              %li= link_to t("controllers.sign_up", default: "Utwórz konto"), new_user_registration_path, style: "color: #48FF00"
-              %li= link_to "Przeglądaj", '#'        
-              %li= link_to "Oferta", '#'
-              %li= link_to t("controllers.sign_in", default: "Zaloguj się"), new_user_session_path
+              - if user_signed_in?
+                %li
+                  = link_to '#' do
+                    = self.current_user.email
+                %li.divider-vertical
+                %li
+                  = link_to '#', class: "icon_box" do
+                    %i.icon-cogs.icon
+                %li.dropdown
+                  %a.icon_box.dropdown-toggle(href="#" data-toggle="dropdown")
+                    %i.icon-comments.icon
+                    %b.caret
+                  %ul.dropdown-menu
+                    %li= link_to "Brak", '#'
+                %li.divider-vertical
+                %li
+                  = link_to destroy_user_session_path, method: :delete, class: "icon_box" do
+                    %i.icon-off.icon
+              - else
+                %li= link_to t("controllers.sign_up", default: "Utwórz konto"), new_user_registration_path, style: "color: #48FF00"
+                %li= link_to "Przeglądaj", '#'        
+                %li= link_to "Oferta", '#'
+                %li= link_to t("controllers.sign_in", default: "Zaloguj się"), new_user_session_path
     .container
-      - flash.each do |type, msg|
-        .flash.alert{ class: "alert-#{type}" }= msg
+      = render "shared/flashes"
       = yield
 
     = javascript_include_tag "https://maps.googleapis.com/maps/api/js?sensor=false"

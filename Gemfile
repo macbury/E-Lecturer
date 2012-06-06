@@ -39,6 +39,7 @@ group :assets do
   gem 'quiet_assets'
   gem 'chosen-rails'
   gem 'client_side_validations'
+  gem 'less-rails-fontawesome'
   gem 'twitter-bootstrap-rails', git: 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
 end
 
@@ -58,5 +59,6 @@ group "test" do
   gem 'guard-livereload'
   gem "guard-spork"
   gem "spork"
+  gem 'capybara'
   gem "ruby_gntp"
 end

@@ -1,0 +1,5 @@
+- flash.each do |type, msg|
+  - if type =~ /notice/i
+    .flash.alert{ class: "alert-success" }= msg
+  - else
+    .flash.alert{ class: "alert-#{type}" }= msg

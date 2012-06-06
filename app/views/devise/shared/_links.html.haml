@@ -10,5 +10,4 @@
   - if devise_mapping.confirmable? && controller_name != 'confirmations'
     %li= link_to t("controllers.confirmation_account", default: "Nie otrzymałeś linku potwierdzającego?"), new_confirmation_path(resource_name)
   - if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks'
-    %li= link_to t("controllers.unlock_link", default: "Nie otrzymałeś linku odblokowującego
-    "), new_unlock_path(resource_name)
+    %li= link_to t("controllers.unlock_link", default: "Nie otrzymałeś linku odblokowującego"), new_unlock_path(resource_name)
