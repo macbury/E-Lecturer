@@ -8,7 +8,7 @@ require 'rspec/autorun'
 require 'capybara/rspec'
 
 Spork.prefork do
-  Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
+  Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 
   RSpec.configure do |config|
     # ## Mock Framework
@@ -20,7 +20,8 @@ Spork.prefork do
     # config.mock_with :rr
     config.include FactoryGirl::Syntax::Methods
     config.include Devise::TestHelpers, type: :controller
-
+    config.include SignHelper, :type => :controller
+    
     # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
     config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
