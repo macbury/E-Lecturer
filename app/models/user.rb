@@ -5,7 +5,6 @@ class User < ActiveRecord::Base
 
   devise                  :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :confirmable, :lockable
   attr_accessible         :email, :password, :password_confirmation, :remember_me, :first_name, :last_name, :screen_name, :phone, :twitter, :facebook
-  attr_protected          :mode
 
   has_and_belongs_to_many :titles
   has_many                :friendships
@@ -18,6 +17,11 @@ class User < ActiveRecord::Base
 
   def lecturer?
     self.mode == User::Lecturer
+  end
+
+  def lecturer!
+    self.mode = User::Lecturer
+    self.save!
   end
 
   def new?
