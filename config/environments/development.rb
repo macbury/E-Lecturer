@@ -45,5 +45,5 @@ Electurer::Application.configure do
     :enable_starttls_auto => false  
   }
 
-  config.action_mailer.default_url_options = { :host => 'electurer.macbury.pl' }
+  config.action_mailer.default_url_options = { :host => 'electurer.gniazdo.local' }
 end

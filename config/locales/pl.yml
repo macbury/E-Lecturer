@@ -2,10 +2,18 @@ pl:
   simple_form:
     labels:
       user:
+        current_password: "Aktualne hasło"
+        first_name: "Imię"
+        last_name: "Nazwisko"
         email: 'E-Mail'
         password: 'Hasło'
         password_confirmation: 'Powtórz hasło'
         remember_me: "Zapamiętaj mnie"
+        phone: "Telefon"
+        screen_name: "Login ekranowy"
+    hints:
+      user:
+        screen_name: "http://electurer.gniazdo.local/login-ekranowy"
   views:
     pagination:
       next: "Dalej"

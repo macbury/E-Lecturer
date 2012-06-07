@@ -4,7 +4,8 @@ class User < ActiveRecord::Base
   Normal                  = 2
 
   devise                  :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :confirmable, :lockable
-  attr_accessible         :email, :password, :password_confirmation, :remember_me, :first_name, :last_name, :screen_name, :phone, :twitter, :facebook
+  attr_accessible         :email, :password, :password_confirmation, :remember_me, :first_name, :last_name, :screen_name, :phone, :twitter, :facebook, :reset_password_token
+  attr_accessor           :current_step
 
   has_and_belongs_to_many :titles
   has_many                :friendships
@@ -12,11 +13,20 @@ class User < ActiveRecord::Base
   has_many                :inverse_friendships, class_name: "Friendship", foreign_key: "friend_id"
   has_many                :inverse_friends, through: :inverse_friendships, source: :user
 
-  validates               :first_name, :last_name, :screen_name, presence: true, if: :lecturer?
-  validates               :screen_name, uniqueness: true, format: /^[a-z\.\-0-9]+$/, length: { in: 3..18 }, if: :lecturer?
+  #validates               :first_name, :last_name, :screen_name, presence: true, if: :lecturer?
+  validates               :screen_name, presence: true, uniqueness: true, format: /^[a-z\.\-0-9]+$/, length: { in: 3..18 }, if: :screen_name_step?
+
+  def screen_name=(new_screen_name)
+    write_attribute :screen_name, new_screen_name
+    self.mode = User::Lecturer
+  end
 
   def lecturer?
     self.mode == User::Lecturer
+  end
+
+  def screen_name_step?
+    self.current_step == :screen_name || self.lecturer?
   end
 
   def lecturer!

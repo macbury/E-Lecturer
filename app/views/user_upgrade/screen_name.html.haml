@@ -1,0 +1,9 @@
+.row
+  .span12
+    .page-header
+      %h2= tt("screen_name.page-header.h2", "Zostań wykładowcą")
+    %p= tt("screen_name.p", "Podaj ciąg znaków który będzie identyfikował ciebie w pasku adresu. ")
+    = simple_form_for self.current_user, url: wizard_path, html: { class: "form-horizontal" } do |f|
+      = f.input :screen_name
+      .form-actions= f.submit "Przejdź dalej", class: "btn btn-primary"
+

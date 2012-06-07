@@ -9,6 +9,43 @@ describe User do
     User.new.new?.should be(true)
   end
 
+  it "should detect lecturer" do
+    user = build(:user)
+    user.lecturer?.should be(false)
+    user.mode = User::Lecturer
+    user.lecturer?.should be(true)
+
+    #user = build(:user)
+    #user.lecturer?.should be(false)
+    #user.current_step = 'screen_name'
+    #user.lecturer?.should be(true)
+    #user.mode = User::Lecturer
+    #user.lecturer?.should be(true)
+  end
+
+  it "should become lecturer if screen_name is setted" do
+    user = build(:user)
+    user.lecturer?.should be(false)
+    user.screen_name = "test#{Time.now.to_i}"
+    user.save
+    user.lecturer?.should be(true)
+  end
+ 
+  it "should valid screen_name as lecturer or in screen_step" do
+    user = build(:user)
+    user.screen_name_step?.should be(false)
+    user.mode = User::Lecturer
+    user.valid?.should be(false)
+    user.errors[:screen_name].should_not be_nil
+    user.mode = User::Undefined
+    user.valid?.should be(true)
+    user.current_step = :screen_name
+    user.valid?.should be(false)
+    user.errors[:screen_name].should_not be_nil
+    user.screen_name_step?.should be(true)
+
+  end
+
   it "should be valid for undefined user" do
     user = build(:user)
     user.new?.should   be(true)

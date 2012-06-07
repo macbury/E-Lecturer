@@ -28,9 +28,15 @@
                   = link_to '#' do
                     = self.current_user.email
                 %li.divider-vertical
-                %li
-                  = link_to '#', class: "icon_box" do
+                %li.dropdown
+                  %a.icon_box.dropdown-toggle(href="#" data-toggle="dropdown")
                     %i.icon-cogs.icon
+                    %b.caret
+                  %ul.dropdown-menu
+                    %li= link_to "Ustawienia", edit_profile_path
+                    - if can? :upgrade, self.current_user
+                      %li.divider
+                      %li= link_to "Stań się wykładowcą", user_upgrade_index_path
                 %li.dropdown
                   %a.icon_box.dropdown-toggle(href="#" data-toggle="dropdown")
                     %i.icon-comments.icon
@@ -46,7 +52,7 @@
                 %li= link_to "Przeglądaj", '#'        
                 %li= link_to "Oferta", '#'
                 %li= link_to t("controllers.sign_in", default: "Zaloguj się"), new_user_session_path
-    .container
+    .container.container_pad
       = render "shared/flashes"
       = yield
       %footer.footer

@@ -17,8 +17,9 @@ end
 
 group :other do
   gem "yettings"
-  gem 'redis-store'
+
   gem "thin"
+  gem "colored"
 end
 
 group :views do
@@ -28,6 +29,7 @@ group :views do
   gem 'drapper'
   gem 'kaminari'
   gem "tabulous"
+  gem "wicked"
 end
 
 group :assets do
@@ -38,7 +40,6 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
   gem 'quiet_assets'
   gem 'chosen-rails'
-  gem 'client_side_validations'
   gem 'less-rails-fontawesome'
   gem 'twitter-bootstrap-rails', git: 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
 end

@@ -3,14 +3,14 @@
 FactoryGirl.define do
   factory :user do
     mode User::Undefined
-    sequence(:email) {|n| "email#{n}@test.local" }
+    sequence(:email) {|n| "user#{n}@test.local" }
     password "foobar1"
     password_confirmation "foobar1"
   end
 
   factory :lecturer, class: User do
     mode User::Lecturer
-    sequence(:email) {|n| "email#{n}@test.local" }
+    sequence(:email) {|n| "lecturer#{n}@test.local" }
     password "foobar1"
     password_confirmation "foobar1"
     first_name  { |index| "Elvis#{1}" }

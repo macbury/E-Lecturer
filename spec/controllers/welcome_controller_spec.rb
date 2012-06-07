@@ -13,18 +13,18 @@ describe WelcomeController do
     get :index
 
     response.should_not render_template("index")
-    response.should be(302)
+    response.should be_redirect
     response.should redirect_to(dashboard_path)
   end
 
   it "should redirect to profile if lecturer" do
-    user = sign_in_as_user
-    user.lecturer!
+    user = as_lecturer
 
     get :index
 
     response.should_not render_template("index")
-    response.should be(302)
+    response.should be_redirect
     response.should redirect_to(profile_path(screen_name: user.screen_name))
   end
+
 end

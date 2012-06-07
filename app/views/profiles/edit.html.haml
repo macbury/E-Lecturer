@@ -1,0 +1,13 @@
+.row
+  .span12
+    .page-header
+      %h3= tt("page-header.h3", "Ustawienia")
+.row
+  .span12
+    = simple_form_for(self.current_user, url: profile_path, html: { class: "form-horizontal", method: :put }) do |f|
+      = f.hidden_field :reset_password_token
+      = f.input :current_password
+      = f.input :password
+      = f.input :password_confirmation
+      .form-actions= f.button :submit, tt("form.submit", "Zmień hasło"), class: "btn btn-primary btn-large"
+
