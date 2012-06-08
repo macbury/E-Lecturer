@@ -1,0 +1,10 @@
+= simple_form_for(@access_token) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :user_id
+    = f.input :code
+    = f.input :expire_at
+
+  .form-actions
+    = f.button :submit

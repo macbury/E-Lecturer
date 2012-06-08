@@ -10,10 +10,10 @@ pl:
         password_confirmation: 'Powtórz hasło'
         remember_me: "Zapamiętaj mnie"
         phone: "Telefon"
-        screen_name: "Login ekranowy"
+        screen_name: "Vanity URL"
     hints:
       user:
-        screen_name: "http://electurer.gniazdo.local/login-ekranowy"
+        screen_name: "Jest to ciąg znaków w adresie serwisu dzięki czemu będzie cię łatwo w nim znaleźć. Ciąg może mieć znaki alfanumeryczne, litery(bez polskich końcówek), kropkę i kreskę."
   views:
     pagination:
       next: "Dalej"

@@ -1,0 +1,25 @@
+.row
+  .span12
+    .page-header.page-title
+      .watch
+        - if can? :observe, @user
+          = link_to '#', class: "btn" do
+            %i.icon-eye-open
+            Obserwuj
+        - if can? :edit, @user
+          = link_to edit_profile_path, class: "btn" do
+            %i.icon-pencil
+            = tt("edit_profile", "Edytuj profil")
+
+
+      %h2 
+        .avatar.pull-left(title="Tadeusz Grabiński")
+          .cover
+        = @user.full_name
+    .subnav
+      %ul.nav.nav-pills.columns5
+        %li.active= link_to "Tablica", '#'
+        %li= link_to "Informacje podstawowe", '#'
+        %li= link_to "Wykłady", '#'
+        %li= link_to "Pliki", '#'
+        %li= link_to "Kontakt", '#'

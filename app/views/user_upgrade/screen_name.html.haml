@@ -2,8 +2,14 @@
   .span12
     .page-header
       %h2= tt("screen_name.page-header.h2", "Zostań wykładowcą")
-    %p= tt("screen_name.p", "Podaj ciąg znaków który będzie identyfikował ciebie w pasku adresu. ")
+    %p= tt("screen_name.p", "Tutaj musisz podać podstawowe wymagane dane do aktywacji konta wykładowcy.")
     = simple_form_for self.current_user, url: wizard_path, html: { class: "form-horizontal" } do |f|
-      = f.input :screen_name
-      .form-actions= f.submit "Przejdź dalej", class: "btn btn-primary"
+      = f.input :first_name
+      = f.input :last_name
+      = f.input :screen_name, :wrapper => :prepend do
+        = content_tag :span, root_url, :class => "add-on"
+        = f.input_field :screen_name
+      .form-actions
+        = f.submit "Przejdź dalej", class: "btn btn-primary"
+        = link_to "Anuluj kreator", root_path, class: "btn"
 

@@ -9,6 +9,11 @@ class ApplicationController < ActionController::Base
     redirect_to root_url, :alert => exception.message
   end
 
+  rescue_from ActiveRecord::RecordNotFound do
+    Rails.logger.info "Page not found".yellow
+    render template: "/shared/404", status: 404
+  end
+
   protected
 
     def lecturer?

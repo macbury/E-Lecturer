@@ -24,7 +24,7 @@ describe WelcomeController do
 
     response.should_not render_template("index")
     response.should be_redirect
-    response.should redirect_to(profile_path(screen_name: user.screen_name))
+    response.should redirect_to(profile_page_path(screen_name: user.screen_name))
   end
 
 end

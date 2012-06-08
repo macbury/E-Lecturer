@@ -26,4 +26,8 @@ module SignHelper
   def logout!
     sign_out :user
   end
+
+  def as_guest!
+    sign_out :user
+  end
 end

@@ -1,0 +1,23 @@
+%h1 Listing access_tokens
+
+%table
+  %tr
+    %th User
+    %th Code
+    %th Expire at
+    %th
+    %th
+    %th
+
+  - @access_tokens.each do |access_token|
+    %tr
+      %td= access_token.user_id
+      %td= access_token.code
+      %td= access_token.expire_at
+      %td= link_to 'Show', access_token
+      %td= link_to 'Edit', edit_access_token_path(access_token)
+      %td= link_to 'Destroy', access_token, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Access token', new_access_token_path

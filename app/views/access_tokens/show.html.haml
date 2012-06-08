@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b User:
+  = @access_token.user_id
+%p
+  %b Code:
+  = @access_token.code
+%p
+  %b Expire at:
+  = @access_token.expire_at
+
+= link_to 'Edit', edit_access_token_path(@access_token)
+\|
+= link_to 'Back', access_tokens_path

@@ -13,6 +13,7 @@ FactoryGirl.define do
     sequence(:email) {|n| "lecturer#{n}@test.local" }
     password "foobar1"
     password_confirmation "foobar1"
+    
     first_name  { |index| "Elvis#{1}" }
     last_name   { |index| "Presley#{1}" }
     screen_name { |index| "screen.name#{1}" }
