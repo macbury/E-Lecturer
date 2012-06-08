@@ -14,7 +14,22 @@ class ProfilesController < ApplicationController
   end
 
   def show
+    @current_tab = :information
     @user = User.is_lecturer.find_by_screen_name!(params[:screen_name])
   end
 
+  def basic_info
+    authorize! :basic_info, self.current_user
+  end
+
+  def update_basic_info
+    authorize! :basic_info, self.current_user
+    @user = current_user
+    if @user.update_attributes(params[:user])
+      flash[:notice] =  I18n.t("flash.info.save_basic_info", default: "Zapisano zmiany")
+    else
+      flash[:error] =  I18n.t("flash.error.save_basic_info", default: "Nie można zapisać zmian")
+    end
+    render :basic_info
+  end
 end

@@ -9,6 +9,7 @@ Spork.prefork do
   require 'rspec/autorun'
   require 'capybara/rspec'
   require "cancan/matchers"
+  require 'carrierwave/test/matchers'
   
   Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 

@@ -9,59 +9,7 @@
     = stylesheet_link_tag "application", :media => "all"
 
   %body{ class: ["controller_#{controller.controller_name}", "action_#{controller.action_name}"].join(" ") }
-    .navbar.navbar-fixed-top
-      .navbar-inner
-        .container
-          %a.btn.btn-navbar(data-toggle="collapse" data-target=".nav-collapse")
-            %span.icon-bar
-            %span.icon-bar
-            %span.icon-bar
-          %a.brand.pull-left{ href: root_path }
-            %i.icon-leaf
-            E-Wykładowca
-          .nav-collapse
-            %form.navbar-search.pull-left
-              %input.search-query( type="text" placeholder="Szukaj..." )
-            %ul.nav.pull-right
-              - if user_signed_in?
-                - if lecturer?
-                  %li
-                    = link_to '#' do
-                      = self.current_user.email
-                %li.divider-vertical
-                %li.dropdown
-                  %a.icon_box.dropdown-toggle(href="#" data-toggle="dropdown")
-                    %i.icon-cogs.icon
-                    %span.hidden-desktop Konto
-                    %b.caret
-                  %ul.dropdown-menu
-                    %li= link_to "Ustawienia", edit_profile_path
-                    - if can? :upgrade, self.current_user
-                      %li.divider
-                      %li= link_to "Stań się wykładowcą", user_upgrade_index_path
-                    - elsif lecturer?
-                      %li.divider
-                      %li.nav-header Twoja strona
-                      %li= link_to "Zobacz stronę", profile_page_path(screen_name: self.current_user.screen_name)
-                      %li= link_to "Podstawowe informacje", '#'
-                      %li= link_to "Kody dostępowe", '#'
-                %li.dropdown
-                  %a.icon_box.dropdown-toggle(href="#" data-toggle="dropdown")
-                    %i.icon-comments.icon
-                    %span.hidden-desktop Powiadomienia
-                    %b.caret
-                  %ul.dropdown-menu
-                    %li= link_to "Brak", '#'
-                %li.divider-vertical
-                %li
-                  = link_to destroy_user_session_path, method: :delete, class: "icon_box" do
-                    %i.icon-off.icon
-                    %span.hidden-desktop= t("controllers.sign_out", default: "Wyloguj się")
-              - else
-                %li= link_to t("controllers.sign_up", default: "Utwórz konto"), new_user_registration_path, style: "color: #48FF00"
-                %li= link_to "Przeglądaj", '#'        
-                %li= link_to "Oferta", '#'
-                %li= link_to t("controllers.sign_in", default: "Zaloguj się"), new_user_session_path
+    = render partial: "shared/header"
     .container.container_pad
       = render "shared/flashes"
       = yield

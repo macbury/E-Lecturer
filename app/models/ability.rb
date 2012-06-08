@@ -14,6 +14,10 @@ class Ability
       can [:upgrade, :upgrade_step_confirm, :upgrade_step_screen_name], User
     end
 
+    if current_user.lecturer?
+      can [:basic_info], User
+    end
+
     can :edit, User do |user|
       current_user.id == user.id
     end

@@ -9,6 +9,20 @@ describe ProfilesController do
       get :show, screen_name: lecturer.screen_name
       response.should be_success
     end
+
+    [:basic_info, :edit].each do |get_action|
+      it "should redirect to login for #{get_action}" do
+        get get_action
+        response.should redirect_to(new_user_session_path)
+      end
+    end
+
+    [:update_basic_info, :update].each do |action|
+      it "should redirect to login for #{action}" do
+        put action
+        response.should redirect_to(new_user_session_path)
+      end
+    end 
 =begin
     it "should show 404 page" do
       get :show, screen_name: nil
@@ -31,6 +45,20 @@ describe ProfilesController do
       response.should be_success
     end
 
+    [:basic_info].each do |get_action|
+      it "should redirect to root for #{get_action}" do
+        get get_action
+        response.should redirect_to(root_path)
+      end
+    end
+
+    [:update_basic_info].each do |action|
+      it "should redirect to root for #{action}" do
+        put action
+        response.should redirect_to(root_path)
+      end
+    end
+
   end
 
   describe "for lecturer user" do
@@ -39,6 +67,18 @@ describe ProfilesController do
     it "should show settings page" do
       get :edit
       response.should be_success
+    end
+
+    it "should show form for :basic_info" do
+      get :basic_info
+      response.should be_success
+      response.should render_template(:basic_info)
+    end
+
+    it "should update basic info for valid data" do
+      put :update_basic_info, user: {}
+      response.should be_success
+      response.should render_template(:basic_info)
     end
   end
 end

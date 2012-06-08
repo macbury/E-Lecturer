@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120608143714) do
+ActiveRecord::Schema.define(:version => 20120608190836) do
 
   create_table "access_tokens", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -28,13 +28,6 @@ ActiveRecord::Schema.define(:version => 20120608143714) do
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-  end
-
-  create_table "followers", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "follower_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
   end
 
   create_table "friendships", :force => true do |t|
@@ -99,9 +92,11 @@ ActiveRecord::Schema.define(:version => 20120608143714) do
     t.string   "last_name"
     t.string   "screen_name"
     t.string   "phone"
-    t.string   "twitter"
-    t.string   "facebook"
     t.integer  "mode",                   :default => 0
+    t.date     "birth_date"
+    t.string   "university"
+    t.string   "picture"
+    t.text     "about"
   end
 
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true

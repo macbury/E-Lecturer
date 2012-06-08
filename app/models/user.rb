@@ -3,8 +3,12 @@ class User < ActiveRecord::Base
   Lecturer                = 1
   Normal                  = 2
 
+  mount_uploader          :picture, UserPosterUploader
   devise                  :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :confirmable, :lockable
-  attr_accessible         :email, :password, :password_confirmation, :remember_me, :first_name, :last_name, :screen_name, :phone, :twitter, :facebook, :reset_password_token
+
+  attr_accessible         :email, :password, :password_confirmation, :remember_me, :reset_password_token, :title_ids, :picture_cache
+  attr_accessible         :first_name, :last_name, :screen_name, :phone, :about, :picture, :university, :birth_date
+
   attr_accessor           :current_step
 
   has_and_belongs_to_many :titles

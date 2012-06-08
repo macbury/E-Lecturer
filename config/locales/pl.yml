@@ -1,4 +1,12 @@
 pl:
+  controllers:
+    profiles:
+      tabs:
+        information: "Informacje podstawowe"
+        timeline: "Tablica"
+        repository: "Repozytoria"
+        files: "Pliki"
+        contact: "Kontakt"
   simple_form:
     labels:
       user:
@@ -11,8 +19,14 @@ pl:
         remember_me: "Zapamiętaj mnie"
         phone: "Telefon"
         screen_name: "Vanity URL"
+        birth_date: "Data urodzenia"
+        titles: "Tytuły"
+        university: "Uczelnia"
+        picture: "Obrazek"
+        about: "O mnie"
     hints:
       user:
+        titles: "zaznacz jakie tytuły udało ci się zdobyć"
         screen_name: "Jest to ciąg znaków w adresie serwisu dzięki czemu będzie cię łatwo w nim znaleźć. Ciąg może mieć znaki alfanumeryczne, litery(bez polskich końcówek), kropkę i kreskę."
   views:
     pagination:
