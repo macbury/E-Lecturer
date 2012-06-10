@@ -1,0 +1,8 @@
+defaults: &defaults
+  scope: email
+
+development:
+  <<: *defaults
+  app_id: 191029171023321
+  secret: 2df2bf60392da3efbc8b530de8f52740
+
