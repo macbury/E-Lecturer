@@ -27,13 +27,49 @@ XLS: https://github.com/hmcgowan/roo
 PDF: https://github.com/yob/pdf-reader
 DOC
 
+
+Identyfikator użytkownika w serwisie składa się z Imienia, nazwiska i loginu w nawiasie.
+
+Powiadomienia
+  Dla każdego utworzonego zasobu w profilu wykładowcy który się subskrybuje pojawia się powiadomienie w panelu powiadomień.
+
+Wewnętrzna poczta
+  Każdy użytkownik może wysłać do następnego użytkownika wiadomość. Profil wykładowcy zawiera już przycisk do auto kontaktu.
+  Skrzyna ma następujące opcje
+    Wiadomości nowe - wiadomości nie przeczytane
+    Archiwum - wiadomości przeczytane
+
+
+Edycja profilu
+  Wykładowca i użytkownik może edytować podstawowe informacje o sobie takie jak:
+    Użytkownik
+      Login
+      Imie
+      Nazwisko
+      Data urodzenia
+      Telefon
+      E-Mail
+      Avatar
+      Uczelnia
+    Wykładowca
+      << To samo co użytkownik
+      ScreenName
+      O mnie
+      Tytuły
+
 Strona główna użytkownika
   Użytkownik
     Strona z tablicą na której pokazane są wszystkie aktywności na tablicach obserwowanych wykładowców
     Po prawej stronie jest lista obserwowanych wykładowców z linkami do ich profilowych tablic
 
+Zostanie wykładowcą:
+  Kreator do zostania wykładowcą ma 2 kroki. Pierwszy pyta czy na pewno chce zostać wykładowcą i wyświetla informacje z tym związane. krok drugi pokazuje formularz w którym podaje się adres vanity dla profilu, obowiązkowe imie i nazwisko. W ostatnim kroku jesteś przekierowany na stronę profilu
+
+
 Profil wykładowcy
-  Avatar + imię i nazwisko wykładowcy
+  Avatar + imię i nazwisko wykładowcy. 
+  Przycisk wizytówka
+    Po kliknięciu jego na pełen ekran pokazuje się informacje o danym wykładowcy z QR kodem
   Nie obserwujący
     Przycisk do obserwacji profilu
     Dostęp do informacji o użytkowniku i tabu kontakt
@@ -51,32 +87,32 @@ Profil wykładowcy
       Na tablicy można dodać wpis każda osoba obserwująca profesora
 
 
-Przycisk obserwuj
-  Przechodzi do ekranu gdzie musi wprowadzić kod dostępowy + akceptacja regulaminu
-  Po wprowadzeniu nieprawidłowego tokenu użytkownik widzi stronę błędu
-  Po wprowadzeniu prawidłowej wartości pojawia się komunikat o dołączeniu do grupy i następuje przekierowanie na stronę profilową wykładowcy
+  Przycisk obserwuj
+    Przechodzi do ekranu gdzie musi wprowadzić kod dostępowy + akceptacja regulaminu
+    Po wprowadzeniu nieprawidłowego tokenu użytkownik widzi stronę błędu
+    Po wprowadzeniu prawidłowej wartości pojawia się komunikat o dołączeniu do grupy i następuje przekierowanie na stronę profilową wykładowcy
 
-Kody dostępowe
-  Użytkownik widzi listę kodów
-  Użytkownik może dodać nowy kod na określony okres
-  Użytkownik może deaktywować kod dostępowy
+  Kody dostępowe
+    Użytkownik widzi listę kodów
+    Użytkownik może dodać nowy kod na określony okres
+    Użytkownik może deaktywować kod dostępowy
 
-Pliki
-  Można tworzyć grupy plików, będą one wyświetlane na popupie dla przycisku sekcje(tylko nadrzędne).
-  Każdy plik można tagować i komentować i nadać tytuł z opisem
+  Pliki
+    Można tworzyć grupy plików, będą one wyświetlane na popupie dla przycisku sekcje(tylko nadrzędne).
+    Każdy plik można tagować i komentować i nadać tytuł z opisem
 
-  Sekcje: Pozostale materialy dydaktyczne (pliki inne niz ppt), Sciagi, samouczki, Prezentacje, Przykladowe projekty i prace domowe, Skany wlasnych publikacji wykladowcy
+    Sekcje: Pozostale materialy dydaktyczne (pliki inne niz ppt), Sciagi, samouczki, Prezentacje, Przykladowe projekty i prace domowe, Skany wlasnych publikacji wykladowcy
 
-Zalecana Literatura
-  Autor, Tytuł, Wydawnicotwo, Rok wydania
-  Można tagować i komentować
+  Zalecana Literatura
+    Autor, Tytuł, Wydawnicotwo, Rok wydania
+    Można tagować i komentować
 
-Linki
-  Link z opisem i tytułem, można tagować i komentować
-  Sekcje: Katalog przydatnych linkow z opisem ich zawartosci
+  Linki
+    Link z opisem i tytułem, można tagować i komentować
+    Sekcje: Katalog przydatnych linkow z opisem ich zawartosci
 
-Testy
-  Lista testów, każdy test ma jakieś pytania z których jest wybierana losowa ilość pytań w losowej kolejności i jest wyświetlana w formie testu, studenci mogą proponować pytania
+  Testy
+    Lista testów, każdy test ma jakieś pytania z których jest wybierana losowa ilość pytań w losowej kolejności i jest wyświetlana w formie testu, studenci mogą proponować pytania
 
 
 

@@ -2,6 +2,12 @@
   .span12
     .page-header.page-title
       .watch
+        = link_to '#', class: "btn" do
+          %i.icon-qrcode
+          Wizytówka
+        = link_to '#', class: "btn" do
+          %i.icon-envelope
+          Wiadomość
         - if can? :observe, @user
           = link_to '#', class: "btn" do
             %i.icon-eye-open
@@ -10,7 +16,6 @@
           = link_to basic_info_profile_path, class: "btn" do
             %i.icon-pencil
             = tt("edit_profile", "Edytuj profil")
-
 
       %h2 
         .avatar.pull-left

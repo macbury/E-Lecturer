@@ -19,7 +19,6 @@ FactoryGirl.define do
     
     sequence(:first_name) {|n| "Arek#{n}" }
     sequence(:last_name) {|n| "Buras#{n}" }
-    sequence(:screen_name) {|n| "screen.#{n}" }
     sequence(:username) {|n| "lecturer#{n}" }
   end
 end

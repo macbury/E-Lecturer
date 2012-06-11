@@ -25,33 +25,25 @@ describe User do
     user.mode = User::Lecturer
     user.lecturer?.should be(true)
 
-    #user = build(:user)
-    #user.lecturer?.should be(false)
-    #user.current_step = 'screen_name'
-    #user.lecturer?.should be(true)
-    #user.mode = User::Lecturer
-    #user.lecturer?.should be(true)
-  end
-
-  it "should become lecturer if screen_name is setted" do
-    user = build(:user)
+    user = create(:user)
     user.lecturer?.should be(false)
-    user.screen_name = "test#{Time.now.to_i}"
-    user.save
+    user.current_step = :screen_name
+    user.lecturer?.should be(false)
+    user.update_attributes become_lecturer: true
     user.lecturer?.should be(true)
   end
  
-  it "should valid screen_name as lecturer or in screen_step" do
-    user = build(:user)
+  it "should valid first and last name as lecturer or in screen_step" do
+    user = build(:user, first_name: nil, last_name: nil)
     user.screen_name_step?.should be(false)
     user.mode = User::Lecturer
     user.valid?.should be(false)
-    user.errors[:screen_name].should_not be_nil
+    user.errors[:first_name].should_not be_nil
+    user.errors[:last_name].should_not be_nil
     user.mode = User::Undefined
     user.valid?.should be(true)
     user.current_step = :screen_name
     user.valid?.should be(false)
-    user.errors[:screen_name].should_not be_nil
     user.screen_name_step?.should be(true)
 
   end
@@ -67,15 +59,15 @@ describe User do
 
 
   { '' => false, "elvis.presley" => true, "test1234" => true, 'programowanie jest fajne' => false, 'śćółń' => false, 'ss' => false, '12345678912345678912345678' => false }.each do |sn, test|
-    it "should return #{test.inspect} for #{sn.inspect} in screen_name" do
-      user = build(:lecturer, screen_name: nil)
+    it "should return #{test.inspect} for #{sn.inspect} in username" do
+      user = build(:lecturer, username: nil)
       user.new_record?.should be(true)
-      user.screen_name = sn
+      user.username = sn
       user.valid?.should be(test)
       if test
-        user.errors[:screen_name].should eq([])
+        user.errors[:username].should eq([])
       else
-        user.errors[:screen_name].should_not eq([])
+        user.errors[:username].should_not eq([])
       end
     end
   end

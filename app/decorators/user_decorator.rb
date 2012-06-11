@@ -1,6 +1,24 @@
 class UserDecorator < ApplicationDecorator
   decorates :user
 
+  def full_name
+    name = [model.first_name, model.last_name].compact.reject(&:empty?)
+    if name.empty?
+      name = model.username
+    else
+      name = name.join(" ") + " (#{model.username})"
+    end
+
+  end
+
+  def profile_link
+    if model.lecturer?
+      h.link_to full_name, profile_path
+    else
+      h.link_to full_name, h.root_url
+    end
+  end
+
   def birth_date
     if model.birth_date.nil?
       return "Brak"
@@ -44,7 +62,11 @@ class UserDecorator < ApplicationDecorator
   end
 
   def profile_path
-    h.profile_page_path(screen_name: model.screen_name)
+    if model.lecturer?
+      h.profile_page_path(screen_name: model.screen_name)
+    else
+      h.root_url
+    end
   end
 
 end

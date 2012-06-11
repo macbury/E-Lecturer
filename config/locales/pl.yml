@@ -19,6 +19,7 @@ pl:
         remember_me: "Zapamiętaj mnie"
         phone: "Telefon"
         screen_name: "Vanity URL"
+        username: "Login"
         birth_date: "Data urodzenia"
         titles: "Tytuły"
         university: "Uczelnia"

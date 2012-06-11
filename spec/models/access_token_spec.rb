@@ -2,8 +2,7 @@ require 'spec_helper'
 
 describe AccessToken do
   it "should create random unique access token for user" do
-    user  = create(:lecturer)
-    token = user.access_tokens.create expire_at: 2.days.from_now
+    token = create(:access_token)
     token.code.should_not be_nil
     token.expired?.should be(false)
   end

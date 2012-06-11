@@ -14,7 +14,8 @@ class UserUpgradeController < ApplicationController
     authorize! :upgrade, @user
 
     @user.current_step = step
-    @user.update_attributes(params[:user])
+    update_status = @user.update_attributes(params[:user])
+
     render_wizard @user
   end
 end

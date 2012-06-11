@@ -7,9 +7,9 @@ class User < ActiveRecord::Base
   devise                  :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :confirmable, :lockable
 
   attr_accessible         :email, :password, :password_confirmation, :remember_me, :reset_password_token, :title_ids, :picture_cache, :username
-  attr_accessible         :first_name, :last_name, :screen_name, :phone, :about, :picture, :university, :birth_date
+  attr_accessible         :first_name, :last_name, :screen_name, :phone, :about, :picture, :university, :birth_date, :become_lecturer
 
-  attr_accessor           :current_step
+  attr_accessor           :current_step, :become_lecturer
 
   has_and_belongs_to_many :titles
   has_many                :friendships
@@ -18,22 +18,20 @@ class User < ActiveRecord::Base
   has_many                :inverse_friends, through: :inverse_friendships, source: :user
   has_many                :access_tokens, dependent: :destroy
 
-  validates               :username, presence: true, format: /^[a-z\.\-0-9]+$/, length: { in: 3..32 }
+  validates               :username, presence: true, uniqueness: true, format: /^[a-z\.\-0-9]+$/, length: { in: 3..24 }
   validates               :first_name, :last_name, presence: true, if: :screen_name_step?
-  validates               :screen_name, presence: true, uniqueness: true, format: /^[a-z\.\-0-9]+$/, length: { in: 3..18 }, if: :screen_name_step?
-
   scope                   :is_lecturer, where(mode: User::Lecturer)
+
+  def screen_name
+    self.username
+  end
+
+  def become_lecturer=(new_mode)
+    write_attribute :mode, User::Lecturer if screen_name_step?
+  end
 
   def username=(new_user_name)
     write_attribute :username, new_user_name if self.new_record?
-  end
-
-  def screen_name=(new_screen_name)
-    if screen_name.nil?
-      write_attribute :screen_name, new_screen_name
-      self.mode = User::Lecturer
-    end
-    screen_name
   end
 
   def lecturer?

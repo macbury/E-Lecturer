@@ -15,7 +15,7 @@ class ProfilesController < ApplicationController
 
   def show
     @current_tab = :information
-    @user           = User.is_lecturer.find_by_screen_name!(params[:screen_name])
+    @user           = User.is_lecturer.find_by_username!(params[:screen_name])
     @user_decorator = UserDecorator.new(@user)
   end
 
