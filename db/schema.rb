@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120608190836) do
+ActiveRecord::Schema.define(:version => 20120611110649) do
 
   create_table "access_tokens", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -104,6 +104,7 @@ ActiveRecord::Schema.define(:version => 20120608190836) do
     t.string   "university"
     t.string   "picture"
     t.text     "about"
+    t.string   "username"
   end
 
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true

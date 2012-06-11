@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   mount_uploader          :picture, UserPosterUploader
   devise                  :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :confirmable, :lockable
 
-  attr_accessible         :email, :password, :password_confirmation, :remember_me, :reset_password_token, :title_ids, :picture_cache
+  attr_accessible         :email, :password, :password_confirmation, :remember_me, :reset_password_token, :title_ids, :picture_cache, :username
   attr_accessible         :first_name, :last_name, :screen_name, :phone, :about, :picture, :university, :birth_date
 
   attr_accessor           :current_step
@@ -18,14 +18,22 @@ class User < ActiveRecord::Base
   has_many                :inverse_friends, through: :inverse_friendships, source: :user
   has_many                :access_tokens, dependent: :destroy
 
-  validates               :first_name, :last_name, :screen_name, presence: true, if: :screen_name_step?
+  validates               :username, presence: true, format: /^[a-z\.\-0-9]+$/, length: { in: 3..32 }
+  validates               :first_name, :last_name, presence: true, if: :screen_name_step?
   validates               :screen_name, presence: true, uniqueness: true, format: /^[a-z\.\-0-9]+$/, length: { in: 3..18 }, if: :screen_name_step?
 
   scope                   :is_lecturer, where(mode: User::Lecturer)
 
+  def username=(new_user_name)
+    write_attribute :username, new_user_name if self.new_record?
+  end
+
   def screen_name=(new_screen_name)
-    write_attribute :screen_name, new_screen_name
-    self.mode = User::Lecturer
+    if screen_name.nil?
+      write_attribute :screen_name, new_screen_name
+      self.mode = User::Lecturer
+    end
+    screen_name
   end
 
   def lecturer?

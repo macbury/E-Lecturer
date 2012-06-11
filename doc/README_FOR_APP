@@ -1,2 +1,107 @@
-Use this README file to introduce your application and point to useful places in the API for learning more.
-Run "rake doc:app" to generate API documentation for your models, controllers, helpers, and libraries.
+
+user
+  email:string
+  password:string
+  permalink:string
+  first_name:string
+  last_name:string
+
+manager
+  user_id:integer
+  university_id:integer
+  mode:integer
+    0 - Lecturer
+    1 - Owner
+    2 - Lecture+Owner
+    3 - Manager
+
+university
+  permalink:string
+  name:string
+  address:string
+
+
+http://ubuntuforums.org/showthread.php?t=236093
+
+XLS: https://github.com/hmcgowan/roo
+PDF: https://github.com/yob/pdf-reader
+DOC
+
+Strona główna użytkownika
+  Użytkownik
+    Strona z tablicą na której pokazane są wszystkie aktywności na tablicach obserwowanych wykładowców
+    Po prawej stronie jest lista obserwowanych wykładowców z linkami do ich profilowych tablic
+
+Profil wykładowcy
+  Avatar + imię i nazwisko wykładowcy
+  Nie obserwujący
+    Przycisk do obserwacji profilu
+    Dostęp do informacji o użytkowniku i tabu kontakt
+    Dostęp do przycisku obserwuj
+    Standardowy tab informacje o użytkowniku
+  Obserwujący
+    Dostęp do wszystkich sekcji
+    Standardowy tab tablica
+
+  Zakładki:
+    Informacje podstawowe
+      Informacje wprowadzone przez wykładowce o sobie
+    Tablica
+      Jak na facebooku, dodanie nowego materiału, linku lub inna akcja powoduje dodanie wpisu na tablicy który można komentować
+      Na tablicy można dodać wpis każda osoba obserwująca profesora
+
+
+Przycisk obserwuj
+  Przechodzi do ekranu gdzie musi wprowadzić kod dostępowy + akceptacja regulaminu
+  Po wprowadzeniu nieprawidłowego tokenu użytkownik widzi stronę błędu
+  Po wprowadzeniu prawidłowej wartości pojawia się komunikat o dołączeniu do grupy i następuje przekierowanie na stronę profilową wykładowcy
+
+Kody dostępowe
+  Użytkownik widzi listę kodów
+  Użytkownik może dodać nowy kod na określony okres
+  Użytkownik może deaktywować kod dostępowy
+
+Pliki
+  Można tworzyć grupy plików, będą one wyświetlane na popupie dla przycisku sekcje(tylko nadrzędne).
+  Każdy plik można tagować i komentować i nadać tytuł z opisem
+
+  Sekcje: Pozostale materialy dydaktyczne (pliki inne niz ppt), Sciagi, samouczki, Prezentacje, Przykladowe projekty i prace domowe, Skany wlasnych publikacji wykladowcy
+
+Zalecana Literatura
+  Autor, Tytuł, Wydawnicotwo, Rok wydania
+  Można tagować i komentować
+
+Linki
+  Link z opisem i tytułem, można tagować i komentować
+  Sekcje: Katalog przydatnych linkow z opisem ich zawartosci
+
+Testy
+  Lista testów, każdy test ma jakieś pytania z których jest wybierana losowa ilość pytań w losowej kolejności i jest wyświetlana w formie testu, studenci mogą proponować pytania
+
+
+
+
+
+- Repozytoria tematyczne (tu jest specyficzny wykaz zalezny od wykladowcy)
+- - Start-up
+- - Opisy systemow informatycznych
+- - Opisy pakietow obliczeniowych (freeware, shareware, )
+- - Prace dotyczace prawa Benfora
+- - itd.
+Sam wykaz modulow to jedna sprawa.
+Inna sprawa to ich organizacja i zasady tworzenia.
+
+Wityna powinna byc miejscem kontaktu wykladowcy ze studentami,
+Materialy zamieszcza wykladowca oraz studenci.
+Np. regula powinno byc przygotowywanie przez studentow propozycji nowych pytan testowych
+Powinno byc forum moderowane.
+Folksonomia oraz ocena materialow przez studentow.
+A takze statystka odwiedzin Stat4u
+
+Tak naprawde trzeba zrobic w oparciu o przeglad kilkudziesieciu witryn, wstepny projekt, potem zaczac go robic i w trakcie tworzenia uzgadniac konkretnie jak i co
+
+Pozdrawiam
+T.Grabinski
+
+tel.501-105810
+tel.12-6360029

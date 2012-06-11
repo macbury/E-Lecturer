@@ -9,6 +9,16 @@ describe User do
     User.new.new?.should be(true)
   end
 
+  it "should allow setup username on create" do
+    user = build(:user)
+    username = user.username
+    user.save
+    user.username.should == username
+    user.update_attributes username: "blabla2"
+    user.username.should == username
+    user.reload.username.should == username
+  end
+
   it "should detect lecturer" do
     user = build(:user)
     user.lecturer?.should be(false)
@@ -55,20 +65,11 @@ describe User do
     user.valid?.should be(false)
   end
 
-  it "should be valid for lecturer user" do
-    user = build(:lecturer)
-    user.valid?.should be(true)
-    user.screen_name = "$%^& *(("
-    user.valid?.should be(false)
-
-    user.errors[:screen_name].should_not be_nil
-    user.screen_name = "elvis.presley"
-    user.valid?.should be(true)
-  end
 
   { '' => false, "elvis.presley" => true, "test1234" => true, 'programowanie jest fajne' => false, 'śćółń' => false, 'ss' => false, '12345678912345678912345678' => false }.each do |sn, test|
     it "should return #{test.inspect} for #{sn.inspect} in screen_name" do
-      user = build(:lecturer)
+      user = build(:lecturer, screen_name: nil)
+      user.new_record?.should be(true)
       user.screen_name = sn
       user.valid?.should be(test)
       if test

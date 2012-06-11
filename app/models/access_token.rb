@@ -4,7 +4,7 @@ class AccessToken < ActiveRecord::Base
 
   validates       :user_id, :expire_at, :code, presence: true
 
-  before_save     :assign_code
+  before_create   :assign_code
 
   scope           :expired, -> { where("expire_at < ?", Time.now) }
 

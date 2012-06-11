@@ -1,8 +1,9 @@
-# Read about factories at https://github.com/thoughtbot/factory_girl
+
 
 FactoryGirl.define do
   factory :user do
     mode User::Undefined
+    sequence(:username) {|n| "user#{n}" }
     sequence(:email) {|n| "user#{n}@test.local" }
     password "foobar1"
     picture nil
@@ -16,8 +17,9 @@ FactoryGirl.define do
     password "foobar1"
     password_confirmation "foobar1"
     
-    first_name  { |index| "Elvis#{1}" }
-    last_name   { |index| "Presley#{1}" }
-    screen_name { |index| "screen.name#{1}" }
+    sequence(:first_name) {|n| "Arek#{n}" }
+    sequence(:last_name) {|n| "Buras#{n}" }
+    sequence(:screen_name) {|n| "screen.#{n}" }
+    sequence(:username) {|n| "lecturer#{n}" }
   end
 end
