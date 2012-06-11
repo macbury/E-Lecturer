@@ -13,33 +13,53 @@
 
 
       %h2 
-        .avatar.pull-left(title="Tadeusz Grabiński")
-          .cover
-        = @user.full_name
+        .avatar.pull-left
+          .cover{ style: "background-image: url('#{@user.picture.url(:thumbnail)}')" }
+        = @user_decorator.full_name
     .subnav
       %ul.nav.nav-pills.columns5
-        = tab_link :information
-        = tab_link :timeline
-        = tab_link :repository
-        = tab_link :files
-        = tab_link :contact
+        = tab_link :information, @user_decorator.profile_path
+        = tab_link :timeline, '#'
+        = tab_link :repository, '#'
+        %li.dropdown
+          %a.dropdown-toggle(data-toggle="dropdown" href="#")
+            = I18n.t("controllers.profiles.tabs.sections")
+            %b.caret
+          %ul.dropdown-menu
+            %li= link_to "Zalecana literatura", '#'
+            %li= link_to "Pozostale materialy dydaktyczne", '#'
+            %li= link_to "Sciagi, samouczki", '#'
+            %li= link_to "Prezentacje", '#'
+            %li= link_to "Linki", '#'
+            %li= link_to "Przykladowe projekty i prace domowe", '#'
+            %li= link_to "Moje publikacje", '#'
+
+        = tab_link :contact, '#'
         
 .row
-  .span4.offset1
+  .span3.offset1
+    .page-header
+      %h3 Zdjęcie
+
+    .thumbnail= image_tag @user.picture.url(:poster)
+  .span4
     .page-header
       %h3 Informacje podstawowe:
     %dl.dl-horizontal
       %dt Imię
-      %dd= @user.first_name
+      %dd= @user_decorator.first_name
       %dt Nazwisko
-      %dd= @user.last_name
+      %dd= @user_decorator.last_name
+      %dt Tytuły
+      %dd= @user_decorator.titles
       %dt Telefon
-      %dd= @user.phone
+      %dd= @user_decorator.phone
       %dt Uczelnia
-      %dd= @user.university
+      %dd= @user_decorator.university
       %dt Data urodzenia
-      %dd= l @user.birth_date, format: :long
-  .span4.offset1
+      %dd= @user_decorator.birth_date
+.row
+  .span10.offset1
     .page-header
       %h3 O mnie:
-    = simple_format @user.about
+    = @user_decorator.about

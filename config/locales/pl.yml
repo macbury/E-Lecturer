@@ -5,7 +5,7 @@ pl:
         information: "Informacje podstawowe"
         timeline: "Tablica"
         repository: "Repozytoria"
-        files: "Pliki"
+        sections: "Sekcje"
         contact: "Kontakt"
   simple_form:
     labels:

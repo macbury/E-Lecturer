@@ -15,12 +15,13 @@
           = f.association :titles, as: :check_boxes
         .span6
           = f.hidden_field :picture_cache
-          %ul.thumbnails
-            %li.offset2
-              .thumbnail= image_tag self.current_user.picture.url(:poster)
+          .thumbnail= image_tag self.current_user.picture.url(:poster)
 
           = f.input :picture, as: :file
       .row
         .span12
-          = f.input :about, input_html: { rows: 10, class: "span5" }
+          .controls
+            .page-header
+              %h6 O mnie
+          = f.input :about, input_html: { rows: 10, class: "span10 wysiwyg" }, label: false
       .form-actions= f.button :submit, tt("basic_info.form.submit", "Zapisz"), class: "btn btn-primary btn-large"

@@ -56,6 +56,8 @@ GEM
       rails (~> 3.0)
     arel (3.0.2)
     bcrypt-ruby (3.0.1)
+    bootstrap-wysihtml5-rails (0.2.10)
+      railties (>= 3.0)
     bourbon (2.1.0)
       sass (>= 3.1)
     builder (3.0.0)
@@ -235,6 +237,8 @@ GEM
       rspec (~> 2.10.0)
     ruby_gntp (0.3.4)
     rubyzip (0.9.8)
+    sanitize (2.0.3)
+      nokogiri (>= 1.4.4, < 1.6)
     sass (3.1.19)
     sass-rails (3.2.5)
       railties (~> 3.2.0)
@@ -293,6 +297,7 @@ DEPENDENCIES
   activeadmin
   ancestry
   annotator
+  bootstrap-wysihtml5-rails
   cancan
   capybara
   carrierwave
@@ -319,6 +324,7 @@ DEPENDENCIES
   rmagick
   rspec-rails
   ruby_gntp
+  sanitize
   sass-rails (~> 3.2.3)
   sextant
   shoulda-matchers

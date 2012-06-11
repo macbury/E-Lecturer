@@ -32,6 +32,7 @@ group :views do
   gem 'kaminari'
   gem "tabulous"
   gem "wicked"
+  gem "sanitize"
 end
 
 group :assets do
@@ -43,6 +44,7 @@ group :assets do
   gem 'quiet_assets'
   gem 'chosen-rails'
   gem 'less-rails-fontawesome'
+  gem "bootstrap-wysihtml5-rails"
   gem 'twitter-bootstrap-rails', git: 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
 end
 

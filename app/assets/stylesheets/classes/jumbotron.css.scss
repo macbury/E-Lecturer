@@ -1,10 +1,10 @@
 @import "compass";
 
-.columns4 li{
+.columns4 > li{
   width: 25%;
 }
 
-.columns5 li{
+.columns5 > li{
   width: 20%;
 }
 
@@ -23,13 +23,21 @@
 
 }
 
-.subnav .nav > li > a:hover {
+.subnav .dropdown-menu {
+  border-top: 0px;
+}
+
+.subnav .nav > li > a:hover, .subnav .nav > .open > a:hover, .subnav .nav > .open > a {
   cursor: pointer;
   color: #4183C4;
   border-bottom: 2px solid #CFDCE8;
   background: #FAFBFD;
   @include background(linear-gradient(#FAFBFD,#DCE6EF));
+}
 
+.subnav .nav > .open > a {
+  border-left: none;
+  border-right: none;
 }
 
 .subnav .nav {
