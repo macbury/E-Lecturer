@@ -30,4 +30,12 @@ module SignHelper
   def as_guest!
     sign_out :user
   end
+
+  def as_student!
+    as_normal_user
+  end
+
+  def as_lecturer!
+    as_lecturer
+  end
 end

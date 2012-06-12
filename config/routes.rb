@@ -1,7 +1,5 @@
 Electurer::Application.routes.draw do
   resources :access_tokens
-
-  resources :universities
   resources :user_upgrade
   devise_for :users
   

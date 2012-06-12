@@ -30,7 +30,7 @@
                   %li.divider
                   %li.nav-header Twoja strona
                   %li= link_to "Zobacz stronę", profile_page_path(screen_name: self.current_user.screen_name)
-                  %li= link_to "Kody dostępowe", '#'
+                  %li= link_to "Kody dostępowe", access_tokens_path
             %li.dropdown
               %a.icon_box.dropdown-toggle(href="#" data-toggle="dropdown")
                 %i.icon-comments.icon

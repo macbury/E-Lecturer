@@ -10,6 +10,10 @@ class Ability
       u.id != current_user.id 
     end
 
+    if current_user.lecturer?
+      can :manage, AccessToken
+    end
+
     if current_user.new?
       can [:upgrade, :upgrade_step_confirm, :upgrade_step_screen_name], User
     end

@@ -1,23 +1,21 @@
-%h1 Listing access_tokens
+.row
+  .span12
+    .page-header
+      %h2= tt("h2", "Twoje kody dostępowe")
+    %p= tt("p", "Dzięki kodom dostępowym możesz ograniczyć dostęp do swojej strony profilowej. Każdy kod dostępowy jest unikalny na cały serwis. Może on też być aktywny przez pewien czas(np 3 miesiące) po czym wygasa i nikt już nie będzie mógł dołączyć do twojej strony profilowej")
 
-%table
-  %tr
-    %th User
-    %th Code
-    %th Expire at
-    %th
-    %th
-    %th
-
-  - @access_tokens.each do |access_token|
-    %tr
-      %td= access_token.user_id
-      %td= access_token.code
-      %td= access_token.expire_at
-      %td= link_to 'Show', access_token
-      %td= link_to 'Edit', edit_access_token_path(access_token)
-      %td= link_to 'Destroy', access_token, :confirm => 'Are you sure?', :method => :delete
-
-%br
-
-= link_to 'New Access token', new_access_token_path
+.row
+  .span12
+    %table.table.zebra-striped.table-bordered.table-striped
+      %thead
+        %tr
+          %th= tt("table.th.code", "Kod")
+          %th= tt("table.th.expire_at", "Ważny do")
+          %th= tt("table.th.name", "Opis")
+          %th= tt("table.th.actions", "Akcje")
+      %tbody
+        - @access_tokens.each do |access_token|
+          %tr
+            %td= access_token.token
+            %td= access_token.expire_at
+            %td= access_token.name

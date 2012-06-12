@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe ProfilesController do
 
-  describe "for guest" do
+  describe "as guest" do
     before { as_guest! }
     it "should show profile page" do
       lecturer = create(:lecturer)
@@ -32,7 +32,7 @@ describe ProfilesController do
 =end
   end
 
-  describe "for normal user" do
+  describe "as student" do
     before { as_normal_user }
 
     it "should show settings page" do
@@ -45,23 +45,21 @@ describe ProfilesController do
       response.should be_success
     end
 
-    [:basic_info].each do |get_action|
-      it "should redirect to root for #{get_action}" do
-        get get_action
-        response.should redirect_to(root_path)
-      end
+    it "should show form for :basic_info" do
+      get :basic_info
+      response.should be_success
+      response.should render_template(:basic_info)
     end
 
-    [:update_basic_info].each do |action|
-      it "should redirect to root for #{action}" do
-        put action
-        response.should redirect_to(root_path)
-      end
+    it "should update basic info for valid data" do
+      put :update_basic_info, user: {}
+      response.should be_success
+      response.should render_template(:basic_info)
     end
 
   end
 
-  describe "for lecturer user" do
+  describe "as lecturer" do
     before { as_lecturer }
 
     it "should show settings page" do
