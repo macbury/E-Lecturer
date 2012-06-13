@@ -24,6 +24,5 @@ class Ability
       current_user.id == user.id
     end
 
-    # See the wiki for details: https://github.com/ryanb/cancan/wiki/Defining-Abilities
   end
 end

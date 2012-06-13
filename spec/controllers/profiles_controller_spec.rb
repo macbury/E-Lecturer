@@ -72,11 +72,13 @@ describe ProfilesController do
       lecturer = create(:lecturer)
       get :show, screen_name: lecturer.screen_name
       response.should be_success
+      assigns(:user).should_not eq(@lecturer)
     end
 
     it "should show profile for my profile page" do
       get :show, screen_name: @lecturer.screen_name
       response.should be_success
+      assigns(:user).should eq(@lecturer)
     end
 
     it "should show settings page" do

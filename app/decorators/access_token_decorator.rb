@@ -4,7 +4,7 @@ class AccessTokenDecorator < ApplicationDecorator
 
   def expire_at
     if model.expired?
-      I18n.t("simple_form.access_token.labels.expired")
+      I18n.t("simple_form.labels.access_token.expired")
     else
       I18n.l(model.expire_at, format: :long) + " (#{h.distance_of_time_in_words_to_now(model.expire_at)})"
     end

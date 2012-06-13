@@ -17,7 +17,6 @@ class AccessTokensController < ApplicationController
   def create
     @access_token = self.current_user.access_tokens.new(params[:access_token])
     authorize! :create, @access_token
-    @access_token.valid?
     
     if @access_token.save
       redirect_to access_tokens_path, notice: I18n.t("flash.info.save_access_token", default: "Dodano nowy kod dostępu!")
@@ -25,5 +24,14 @@ class AccessTokensController < ApplicationController
       flash[:error] = I18n.t("flash.error.save_access_token", default: "Nie można dodać kodu dostępu")
       render action: "new"
     end
+  end
+
+  def destroy
+    @access_token = self.current_user.access_tokens.find(params[:id])
+    authorize! :destroy, @access_token
+
+    @access_token.destroy
+    flash[:notice] = I18n.t("flash.info.destroy_access_token", default: "Kod dostępu został dezaktywowany.")
+    redirect_to access_tokens_path
   end
 end

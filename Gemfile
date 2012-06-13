@@ -56,7 +56,8 @@ group :development, :test do
   gem 'rack-livereload' 
 end
 
-group "test" do
+group :test do
+  gem "fuubar"
   gem 'database_cleaner'
   gem 'shoulda-matchers'
   gem "nyan-cat-formatter"

@@ -11,10 +11,14 @@
         %tr
           %th.span3= tt("table.th.created_at", "Dodany")
           %th.span2= tt("table.th.code", "Kod")
-          %th.span3= tt("table.th.expire_at", "Ważny do")
+          %th.span4= tt("table.th.expire_at", "Ważny do")
           %th= tt("table.th.name", "Opis")
           %th.span1= tt("table.th.actions", "Akcje")
       %tbody
+        - if @access_tokens_decorators.empty?
+          %tr
+            %td(colspan=5)
+              = tt("empty", "Nie masz jeszcze żadnego kodu dostępowego")
         - @access_tokens_decorators.each do |access_token|
           %tr
             %td= access_token.created_at
@@ -22,4 +26,4 @@
             %td= access_token.expire_at
             %td= access_token.name
             %td
-              = link_to "Deaktywuj", '#', class: "btn btn-danger btn-mini"
+              = link_to "Deaktywuj", access_token, class: "btn btn-danger btn-mini", method: :delete, confirm: tt("confirm.delete", "Czy na pewno chcesz deaktywować ten kod dostępu?")

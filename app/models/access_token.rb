@@ -3,6 +3,7 @@ class AccessToken < ActiveRecord::Base
   attr_accessible   :expire_at, :name
 
   validates         :user_id, :expire_at, :code, presence: true
+  validates         :name, allow_blank: true, length: { maximum: 34 }
 
   before_validation :assign_code
 
@@ -10,6 +11,7 @@ class AccessToken < ActiveRecord::Base
 
   def assign_code
     self.code = AccessToken.generate_code!
+    Rails.logger.debug "Generated: #{self.code.bold}".yellow
   end
 
   def expired?
@@ -18,7 +20,7 @@ class AccessToken < ActiveRecord::Base
 
   def self.generate_code!
     while true
-      code = (1000000+(rand*900000)).round.to_s(32)
+      code = SecureRandom.hex(3)
       break if AccessToken.where(code: code).first.nil?
     end
 
