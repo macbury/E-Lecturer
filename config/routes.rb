@@ -1,4 +1,5 @@
 Electurer::Application.routes.draw do
+
   resources :access_tokens
   resources :user_upgrade
   devise_for :users
@@ -11,9 +12,8 @@ Electurer::Application.routes.draw do
   match "/dashboard" => "dashboard#index", as: :dashboard
   scope "/:screen_name", format: :html, constraints: { screen_name: /[^\/]+/ } do
     match "/" => "profiles#show", as: :profile_page
-    #resources :files
+    resource :friendship
   end
-  #match "/:screen_name" => "profiles#show", as: :profile_page, format: :html, constraints: { screen_name: /[^\/]+/ }
 
   root to: 'welcome#index'
 end

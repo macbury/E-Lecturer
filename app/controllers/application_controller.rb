@@ -23,4 +23,8 @@ class ApplicationController < ActionController::Base
       user_signed_in? && self.current_user.lecturer?
     end
 
+    def preload_lecturer!
+      @lecturer = User.is_lecturer.find_by_username!(params[:screen_name])
+    end
+
 end
