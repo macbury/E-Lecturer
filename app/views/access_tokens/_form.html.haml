@@ -1,10 +1,10 @@
-= simple_form_for(@access_token) do |f|
-  = f.error_notification
+= simple_form_for(@access_token, html: { class: "form-horizontal" }) do |f|
 
   .form-inputs
-    = f.input :user_id
-    = f.input :code
-    = f.input :expire_at
+
+    = f.input :name
+    = f.input :expire_at, :start_year => Time.now.year
 
   .form-actions
-    = f.button :submit
+    = f.submit "Wygeneruj", class: "btn btn-primary"
+    = link_to "Anuluj", access_tokens_path, class: "btn"

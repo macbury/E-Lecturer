@@ -1,12 +1,12 @@
 class AccessToken < ActiveRecord::Base
-  belongs_to      :user
-  attr_accessible :expire_at, :name
+  belongs_to        :user
+  attr_accessible   :expire_at, :name
 
-  validates       :user_id, :expire_at, :code, presence: true
+  validates         :user_id, :expire_at, :code, presence: true
 
-  before_create   :assign_code
+  before_validation :assign_code
 
-  scope           :expired, -> { where("expire_at < ?", Time.now) }
+  scope             :expired, -> { where("expire_at < ?", Time.now) }
 
   def assign_code
     self.code = AccessToken.generate_code!

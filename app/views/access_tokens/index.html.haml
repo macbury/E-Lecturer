@@ -1,21 +1,25 @@
 .row
   .span12
     .page-header
+      = link_to tt("add", "Dodaj nowy kod dostępu"), new_access_token_path, class: "btn btn-large btn-primary pull-right"
       %h2= tt("h2", "Twoje kody dostępowe")
-    %p= tt("p", "Dzięki kodom dostępowym możesz ograniczyć dostęp do swojej strony profilowej. Każdy kod dostępowy jest unikalny na cały serwis. Może on też być aktywny przez pewien czas(np 3 miesiące) po czym wygasa i nikt już nie będzie mógł dołączyć do twojej strony profilowej")
-
+    %p.well= tt("p", "Dzięki kodom dostępowym możesz ograniczyć dostęp do swojej strony profilowej. Każdy kod dostępowy jest unikalny na cały serwis. Może on też być aktywny przez pewien czas(np 3 miesiące) po czym wygasa i nikt już nie będzie mógł dołączyć do twojej strony profilowej")
 .row
   .span12
     %table.table.zebra-striped.table-bordered.table-striped
       %thead
         %tr
-          %th= tt("table.th.code", "Kod")
-          %th= tt("table.th.expire_at", "Ważny do")
+          %th.span3= tt("table.th.created_at", "Dodany")
+          %th.span2= tt("table.th.code", "Kod")
+          %th.span3= tt("table.th.expire_at", "Ważny do")
           %th= tt("table.th.name", "Opis")
-          %th= tt("table.th.actions", "Akcje")
+          %th.span1= tt("table.th.actions", "Akcje")
       %tbody
-        - @access_tokens.each do |access_token|
+        - @access_tokens_decorators.each do |access_token|
           %tr
-            %td= access_token.token
+            %td= access_token.created_at
+            %td= access_token.code
             %td= access_token.expire_at
             %td= access_token.name
+            %td
+              = link_to "Deaktywuj", '#', class: "btn btn-danger btn-mini"

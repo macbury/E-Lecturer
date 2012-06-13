@@ -35,6 +35,12 @@ describe ProfilesController do
   describe "as student" do
     before { as_normal_user }
 
+    it "should show profile page" do
+      lecturer = create(:lecturer)
+      get :show, screen_name: lecturer.screen_name
+      response.should be_success
+    end
+
     it "should show settings page" do
       get :edit
       response.should be_success
@@ -60,7 +66,18 @@ describe ProfilesController do
   end
 
   describe "as lecturer" do
-    before { as_lecturer }
+    before { @lecturer = as_lecturer }
+
+    it "should show profile page for other lecturer" do
+      lecturer = create(:lecturer)
+      get :show, screen_name: lecturer.screen_name
+      response.should be_success
+    end
+
+    it "should show profile for my profile page" do
+      get :show, screen_name: @lecturer.screen_name
+      response.should be_success
+    end
 
     it "should show settings page" do
       get :edit

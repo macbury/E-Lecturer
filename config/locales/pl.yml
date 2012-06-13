@@ -9,6 +9,10 @@ pl:
         contact: "Kontakt"
   simple_form:
     labels:
+      access_token:
+        name: "Opis"
+        expired: "Wygasł"
+        expire_at: "Ważny do"
       user:
         current_password: "Aktualne hasło"
         first_name: "Imię"

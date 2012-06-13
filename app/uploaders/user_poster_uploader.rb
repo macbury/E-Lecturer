@@ -12,12 +12,23 @@ class UserPosterUploader < CarrierWave::Uploader::Base
 
   # Choose what kind of storage to use for this uploader:
   storage :file
-  # storage :fog
 
-  # Override the directory where uploaded files will be stored.
-  # This is a sensible default for uploaders that are meant to be mounted:
+  after :remove, :delete_empty_upstream_dirs
+
   def store_dir
-    "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+    "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{get_last_dir_part(model.id)}"
+  end
+
+  def get_last_dir_part(modelid)
+    p = modelid.to_s.rjust(9, '0')
+    "#{p[0,3]}/#{p[3,3]}/#{p[6,3]}"
+  end
+
+  def delete_empty_upstream_dirs
+    path = ::File.expand_path(store_dir, root)
+    Dir.delete(path) # fails if path not empty dir
+  rescue SystemCallError
+    true # nothing, the dir is not empty
   end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:

@@ -6,4 +6,8 @@ FactoryGirl.define do
     code { |index| "token#{index}" }
     expire_at 2.days.from_now
   end
+
+  factory :access_token_for_form, class: AccessToken do
+    expire_at 2.days.from_now
+  end
 end
