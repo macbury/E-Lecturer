@@ -11,6 +11,11 @@ class UserDecorator < ApplicationDecorator
 
   end
 
+  def new_friendship_path(options={})
+    options[:screen_name] = model.username
+    h.new_friendship_path(options)
+  end
+
   def profile_link
     if model.lecturer?
       h.link_to full_name, profile_path

@@ -16,7 +16,7 @@ module Electurer
     # -- all .rb files in that directory are automatically loaded.
 
     # Custom directories with classes and modules you want to be autoloadable.
-    config.autoload_paths += %W(#{Rails.root}/lib #{Rails.root}/app/workers)
+    config.autoload_paths += %W(#{Rails.root}/lib #{Rails.root}/lib/validators #{Rails.root}/app/workers)
     config.generators do |g|
       g.view_specs false
       g.helper_specs false

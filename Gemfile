@@ -20,7 +20,7 @@ end
 group :other do
   gem "yettings"
 
-  gem "thin"
+  gem "unicorn"
   gem "colored"
 end
 

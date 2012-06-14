@@ -61,13 +61,14 @@ describe AccessTokensController do
     before { as_lecturer! }
 
     it "should show list of access tokens" do
+      controller.current_user.access_tokens.each(&:destroy)
       3.times { controller.current_user.access_tokens.create(FactoryGirl.attributes_for(:access_token_for_form)) }
       controller.current_user.save
 
       get :index
       response.should be_success
       response.should render_template("index")
-      assigns(:access_tokens).should eq(controller.current_user.access_tokens)
+      assigns(:access_tokens).should == controller.current_user.reload.access_tokens.order("created_at DESC")
     end
 
     it "should show new access token page with form" do

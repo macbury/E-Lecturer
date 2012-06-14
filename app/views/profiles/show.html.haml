@@ -9,9 +9,9 @@
           %i.icon-envelope
           Wiadomość
         - if can? :observe, @user
-          = link_to '#', class: "btn" do
+          = link_to @user_decorator.new_friendship_path, class: "btn" do
             %i.icon-eye-open
-            Dołącz
+            Obserwuj
         - if can? :edit, @user
           = link_to basic_info_profile_path, class: "btn" do
             %i.icon-pencil

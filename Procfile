@@ -1,2 +1,2 @@
-web:   bundle exec thin start --socket /home/projects/electurer/tmp/socket/thin.sock
-guard: bundle exec guard start --notify true
+web:   bundle exec unicorn -c config/unicorn.rb
+guard: bundle exec guard

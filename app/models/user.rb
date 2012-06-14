@@ -51,8 +51,8 @@ class User < ActiveRecord::Base
     self.mode == User::Undefined
   end
 
-  def normal?
-    self.mode == User::Normal
+  def student?
+    new?
   end
 
   def full_name

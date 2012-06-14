@@ -14,7 +14,8 @@ class Ability
       can :manage, AccessToken
     end
 
-    if current_user.new?
+    if current_user.student?
+      can :manage, Friendship
       can [:upgrade, :upgrade_step_confirm, :upgrade_step_screen_name], User
     end
 
