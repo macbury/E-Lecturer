@@ -1,6 +1,6 @@
 # encoding: UTF-8
 class FriendshipsController < ApplicationController
-  before_filter :authenticate_user!, :preload_lecturer!
+  before_filter :authenticate_user!, :preload_lecturer!, :is_not_observing!
 
   def new
     @friendship = build_friendship
@@ -12,9 +12,9 @@ class FriendshipsController < ApplicationController
     authorize! :create, @friendship
 
     if @friendship.save
-      redirect_to access_tokens_path, notice: I18n.t("flash.info.save_access_token", default: "Dodano nowy kod dostępu!")
+      redirect_to profile_path(screen_name: @lecturer.username), notice: I18n.t("flash.info.save_access_token", default: "Masz dostęp do zasobów wykładowcy")
     else
-      flash[:error] = I18n.t("flash.error.save_friendship", default: "Nie możnda")
+      flash[:error] = I18n.t("flash.error.save_friendship", default: "Błąd")
       render action: "new"
     end
   end
@@ -22,8 +22,11 @@ class FriendshipsController < ApplicationController
   protected
 
     def build_friendship(attrs={})
-      friendship = @lecturer.friendships.new(attrs)
-      friendship.friend_id = self.current_user.id
+      friendship = Friendship.new(attrs)
+      friendship.student_id = self.current_user.id
+      friendship.lecturer_id = @lecturer.id
       friendship
     end
+
+
 end

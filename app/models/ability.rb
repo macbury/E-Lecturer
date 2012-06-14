@@ -6,16 +6,15 @@ class Ability
 
     can :upgrade_step_finish, User
 
-    can :observe, User do |u| 
-      u.id != current_user.id 
-    end
-
     if current_user.lecturer?
       can :manage, AccessToken
     end
 
     if current_user.student?
-      can :manage, Friendship
+      can :observe, User do |user|
+        user != current_user && !current_user.observe?(user)
+      end
+      can [:new, :create], Friendship
       can [:upgrade, :upgrade_step_confirm, :upgrade_step_screen_name], User
     end
 

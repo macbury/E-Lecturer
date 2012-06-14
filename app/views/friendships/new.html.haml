@@ -1,2 +1,11 @@
-%h1 Friendships#create
-%p Find me in app/views/friendships/create.html.haml
+.row
+  .span12
+    .page-header
+      %h2= tt("page-header.h2", "Wprowadź kod dostępowy do strony")
+.row
+  .span12
+    = simple_form_for @friendship, url: friendship_path(screen_name: @lecturer.username) do |f|
+      = f.input :access_token
+      .form-actions
+        = f.submit "Przejdź dalej", class: "btn btn-primary"
+        = link_to "Anuluj kreator", root_path, class: "btn"

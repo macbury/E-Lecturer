@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  include Amistad::FriendModel
+  
   Undefined               = 0
   Lecturer                = 1
   Normal                  = 2
@@ -12,10 +14,6 @@ class User < ActiveRecord::Base
   attr_accessor           :current_step, :become_lecturer
 
   has_and_belongs_to_many :titles
-  has_many                :friendships
-  has_many                :friends, through: :friendships
-  has_many                :inverse_friendships, class_name: "Friendship", foreign_key: "friend_id"
-  has_many                :inverse_friends, through: :inverse_friendships, source: :user
   has_many                :access_tokens, dependent: :destroy
 
   validates               :username, presence: true, uniqueness: true, format: /^[a-z\.\-0-9]+$/, length: { in: 3..24 }
@@ -59,7 +57,8 @@ class User < ActiveRecord::Base
     [self.first_name, self.last_name].join(" ")
   end
 
-  def following?(user)
+  def observe?(user)
     self.friendships.where(friend_id: user.id).pluck(:id).present?
   end
+
 end

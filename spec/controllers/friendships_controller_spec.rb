@@ -17,7 +17,7 @@ describe FriendshipsController do
   describe "as student" do
     before { as_student! }
 
-    it "should show new page" do
+    it "should show new page if not observing lecturer" do
       lecturer = create(:lecturer)
       get :new, screen_name: lecturer.username
 
@@ -25,6 +25,14 @@ describe FriendshipsController do
       response.should render_template("new")
       assigns(:friendship).friend.should  eq(controller.current_user)
       assigns(:friendship).user.should    eq(lecturer)
+    end
+
+    it "should redirect to profile page if observing lecturer" do
+      lecturer = create(:lecturer)
+      observe!(lecturer)
+      get :new, screen_name: lecturer.username
+
+      response.should redirect_to(profile_path(screen_name: lecturer.username))
     end
   end
 

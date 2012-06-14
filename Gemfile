@@ -6,7 +6,7 @@ group :orm do
   gem 'pg'
   gem "ancestry"
   gem "carrierwave"
-  gem "rmagick"
+  gem 'amistad'
 end
 
 group :authorization do
@@ -19,7 +19,7 @@ end
 
 group :other do
   gem "yettings"
-
+  gem "rmagick"
   gem "unicorn"
   gem "colored"
 end

@@ -9,6 +9,8 @@ pl:
         contact: "Kontakt"
   simple_form:
     labels:
+      friendship:
+        access_token: 'Kod dostępowy'
       access_token:
         name: "Opis"
         expired: "Wygasł"

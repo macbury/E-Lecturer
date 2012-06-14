@@ -38,4 +38,12 @@ module SignHelper
   def as_lecturer!
     as_lecturer
   end
+
+  def observe!(user)
+    access_token = user.access_tokens.create(FactoryGirl.attributes_for(:access_token_for_form))
+    friendship = user.friendships.new(access_token: access_token.code)
+    friendship.friend_id = controller.current_user.id
+    friendship.save!
+    
+  end
 end

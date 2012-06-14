@@ -9,11 +9,14 @@ class ApplicationController < ActionController::Base
     redirect_to root_url, :alert => exception.message
   end
 
-  rescue_from ActiveRecord::RecordNotFound do
-    Rails.logger.info "Page not found".yellow
-    render template: "/shared/404", status: 404
-  end
+  if Rails.env != "development"
 
+    rescue_from ActiveRecord::RecordNotFound do
+      Rails.logger.info "Page not found".yellow
+      render template: "/shared/404", status: 404
+    end
+
+  end
   protected
     def current_user_decorator
       @current_user_decorator || UserDecorator.new(self.current_user)
@@ -27,4 +30,13 @@ class ApplicationController < ActionController::Base
       @lecturer = User.is_lecturer.find_by_username!(params[:screen_name])
     end
 
+    def is_not_observing!
+      if current_user.observe?(@lecturer)
+        redirect_to profile_path(screen_name: @lecturer.username) 
+      end
+    end
+
+    def is_observing!
+      redirect_to profile_path(screen_name: @lecturer.username) unless current_user.observe?(@lecturer)
+    end
 end

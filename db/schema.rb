@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120611131236) do
+ActiveRecord::Schema.define(:version => 20120614232525) do
 
   create_table "access_tokens", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -31,11 +31,13 @@ ActiveRecord::Schema.define(:version => 20120611131236) do
   end
 
   create_table "friendships", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "friend_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer "user_id"
+    t.integer "friend_id"
+    t.integer "blocker_id"
+    t.boolean "pending",    :default => true
   end
+
+  add_index "friendships", ["user_id", "friend_id"], :name => "index_friendships_on_user_id_and_friend_id", :unique => true
 
   create_table "sessions", :force => true do |t|
     t.string   "session_id", :null => false
