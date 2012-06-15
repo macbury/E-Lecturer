@@ -57,8 +57,17 @@ class User < ActiveRecord::Base
     [self.first_name, self.last_name].join(" ")
   end
 
-  def observe?(user)
-    self.friendships.where(friend_id: user.id).pluck(:id).present?
+  def connect_with!(user,attrs={})
+    return false if user == self || find_any_friendship_with(user)
+    friendship                = Friendship.new(attrs)
+    friendship.user_id        = self.id
+    friendship.friend_id      = user.id
+    if friendship.save
+      user.approve(self)
+      friendship
+    else
+      friendship
+    end
   end
 
 end

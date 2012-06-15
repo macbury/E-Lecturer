@@ -31,12 +31,12 @@ class ApplicationController < ActionController::Base
     end
 
     def is_not_observing!
-      if current_user.observe?(@lecturer)
-        redirect_to profile_path(screen_name: @lecturer.username) 
+      if current_user.friend_with?(@lecturer)
+        redirect_to profile_page_path(screen_name: @lecturer.username) 
       end
     end
 
     def is_observing!
-      redirect_to profile_path(screen_name: @lecturer.username) unless current_user.observe?(@lecturer)
+      redirect_to profile_page_path(screen_name: @lecturer.username) unless current_user.friend_with?(@lecturer)
     end
 end

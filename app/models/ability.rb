@@ -12,7 +12,7 @@ class Ability
 
     if current_user.student?
       can :observe, User do |user|
-        user != current_user && !current_user.observe?(user)
+        user != current_user && !current_user.friend_with?(user)
       end
       can [:new, :create], Friendship
       can [:upgrade, :upgrade_step_confirm, :upgrade_step_screen_name], User

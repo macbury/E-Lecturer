@@ -1,0 +1,9 @@
+.row
+  .span12
+    .page-header
+      %h2= tt("page-header.h2", "Wykładowcy")
+.row
+  .span12
+    %ul
+      - @lecturers_decorator.each do |lecturer|
+        %li= lecturer.profile_link

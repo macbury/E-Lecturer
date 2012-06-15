@@ -13,7 +13,7 @@
           %input.search-query( type="text" placeholder="Szukaj..." )
         %ul.nav.pull-right
           - if user_signed_in?
-            %li= current_user_decorator.profile_link
+            %li= link_to t("controllers.explore", default: "Przeglądaj"), explore_path
             %li.divider-vertical
             %li.dropdown
               %a.icon_box.dropdown-toggle(href="#" data-toggle="dropdown")
@@ -45,6 +45,6 @@
                 %span.hidden-desktop= t("controllers.sign_out", default: "Wyloguj się")
           - else
             %li= link_to t("controllers.sign_up", default: "Utwórz konto"), new_user_registration_path, style: "color: #48FF00"
-            %li= link_to "Przeglądaj", '#'        
+            %li= link_to t("controllers.explore", default: "Przeglądaj"), explore_path
             %li= link_to "Oferta", '#'
             %li= link_to t("controllers.sign_in", default: "Zaloguj się"), new_user_session_path
