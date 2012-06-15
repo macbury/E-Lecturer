@@ -15,6 +15,8 @@ class User < ActiveRecord::Base
 
   has_and_belongs_to_many :titles
   has_many                :access_tokens, dependent: :destroy
+  has_many                :streams, dependent: :destroy
+  has_many                :posts, through: :streams, source: :user, class_name: "Post"
 
   validates               :username, presence: true, uniqueness: true, format: /^[a-z\.\-0-9]+$/, length: { in: 3..24 }
   validates               :first_name, :last_name, presence: true, if: :screen_name_step?

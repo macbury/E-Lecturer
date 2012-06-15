@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120614232525) do
+ActiveRecord::Schema.define(:version => 20120615193831) do
 
   create_table "access_tokens", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -39,6 +39,12 @@ ActiveRecord::Schema.define(:version => 20120614232525) do
 
   add_index "friendships", ["user_id", "friend_id"], :name => "index_friendships_on_user_id_and_friend_id", :unique => true
 
+  create_table "posts", :force => true do |t|
+    t.text     "body"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "sessions", :force => true do |t|
     t.string   "session_id", :null => false
     t.text     "data"
@@ -48,6 +54,15 @@ ActiveRecord::Schema.define(:version => 20120614232525) do
 
   add_index "sessions", ["session_id"], :name => "index_sessions_on_session_id"
   add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
+
+  create_table "streams", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "lecturer_id"
+    t.integer  "streamable_id"
+    t.string   "streamable_type"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
 
   create_table "titles", :force => true do |t|
     t.string   "name"
