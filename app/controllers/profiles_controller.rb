@@ -1,6 +1,7 @@
 # encoding: UTF-8
 class ProfilesController < ApplicationController
-  before_filter :authenticate_user!, except: [:show]
+  before_filter :authenticate_user!,  except: [:show, :dashboard]
+  before_filter :preload_lecturer!,   only: [:show, :dashboard]
 
   def update
     authorize! :edit, self.current_user
@@ -13,10 +14,16 @@ class ProfilesController < ApplicationController
     end
   end
 
+  def dashboard
+    if user_signed_in? && (current_user.friend_with?(@lecturer) || current_user == @lecturer)
+      redirect_to timeline_path(screen_name: @lecturer.username)
+    else
+      redirect_to information_path(screen_name: @lecturer.username)
+    end
+  end
+
   def show
-    @current_tab    = :information
-    @user           = User.is_lecturer.find_by_username!(params[:screen_name])
-    @user_decorator = UserDecorator.new(@user)
+    @current_tab        = :information
   end
 
   def basic_info

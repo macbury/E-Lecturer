@@ -1,70 +1,29 @@
-.row
-  .span12
-    .page-header.page-title
-      .watch
-        = link_to '#', class: "btn" do
-          %i.icon-qrcode
-          Wizytówka
-        = link_to '#', class: "btn" do
-          %i.icon-envelope
-          Wiadomość
-        - if can? :observe, @user
-          = link_to @user_decorator.new_friendship_path, class: "btn" do
-            %i.icon-eye-open
-            Obserwuj
-        - if can? :edit, @user
-          = link_to basic_info_profile_path, class: "btn" do
-            %i.icon-pencil
-            = tt("edit_profile", "Edytuj profil")
+= render partial: "profiles/header"
 
-      %h2 
-        .avatar.pull-left
-          .cover{ style: "background-image: url('#{@user.picture.url(:thumbnail)}')" }
-        = @user_decorator.full_name
-    .subnav
-      %ul.nav.nav-pills.columns5
-        = tab_link :information, @user_decorator.profile_path
-        = tab_link :timeline, '#'
-        = tab_link :repository, '#'
-        %li.dropdown
-          %a.dropdown-toggle(data-toggle="dropdown" href="#")
-            = I18n.t("controllers.profiles.tabs.sections")
-            %b.caret
-          %ul.dropdown-menu
-            %li= link_to "Zalecana literatura", '#'
-            %li= link_to "Pozostale materialy dydaktyczne", '#'
-            %li= link_to "Sciagi, samouczki", '#'
-            %li= link_to "Prezentacje", '#'
-            %li= link_to "Linki", '#'
-            %li= link_to "Przykladowe projekty i prace domowe", '#'
-            %li= link_to "Moje publikacje", '#'
-
-        = tab_link :contact, '#'
-        
 .row
   .span3.offset1
     .page-header
       %h3 Zdjęcie
 
-    .thumbnail= image_tag @user.picture.url(:poster)
+    .thumbnail= image_tag @lecturer.picture.url(:poster)
   .span4
     .page-header
       %h3 Informacje podstawowe:
     %dl.dl-horizontal
       %dt Imię
-      %dd= @user_decorator.first_name
+      %dd= @lecturer_decorator.first_name
       %dt Nazwisko
-      %dd= @user_decorator.last_name
+      %dd= @lecturer_decorator.last_name
       %dt Tytuły
-      %dd= @user_decorator.titles
+      %dd= @lecturer_decorator.titles
       %dt Telefon
-      %dd= @user_decorator.phone
+      %dd= @lecturer_decorator.phone
       %dt Uczelnia
-      %dd= @user_decorator.university
+      %dd= @lecturer_decorator.university
       %dt Data urodzenia
-      %dd= @user_decorator.birth_date
+      %dd= @lecturer_decorator.birth_date
 .row
   .span10.offset1
     .page-header
       %h3 O mnie:
-    = @user_decorator.about
+    = @lecturer_decorator.about

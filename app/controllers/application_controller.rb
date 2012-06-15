@@ -27,7 +27,8 @@ class ApplicationController < ActionController::Base
     end
 
     def preload_lecturer!
-      @lecturer = User.is_lecturer.find_by_username!(params[:screen_name])
+      @lecturer           = User.is_lecturer.find_by_username!(params[:screen_name])
+      @lecturer_decorator = UserDecorator.new(@lecturer)
     end
 
     def is_not_observing!
@@ -37,6 +38,11 @@ class ApplicationController < ActionController::Base
     end
 
     def is_observing!
-      redirect_to profile_page_path(screen_name: @lecturer.username) unless current_user.friend_with?(@lecturer)
+      if (current_user.friend_with?(@lecturer) || current_user == @lecturer)
+        Rails.logger.info "Can access this fanpage"
+      else
+        flash[:error] = I18n.t("flash.error.save_friendship", default: "Aby mieć dostęp do tego działu musisz obserwować tego wykładowcę!")
+        redirect_to profile_page_path(screen_name: @lecturer.username) 
+      end
     end
 end

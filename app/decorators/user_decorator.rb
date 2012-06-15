@@ -74,4 +74,11 @@ class UserDecorator < ApplicationDecorator
     end
   end
 
+  def timeline_path
+    h.timeline_path(screen_name: model.screen_name)
+  end
+
+  def information_path
+    h.information_path(screen_name: model.screen_name)
+  end
 end

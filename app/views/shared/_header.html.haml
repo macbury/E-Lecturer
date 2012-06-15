@@ -11,9 +11,14 @@
       .nav-collapse
         %form.navbar-search.pull-left
           %input.search-query( type="text" placeholder="Szukaj..." )
+        - if user_signed_in?
+          %ul.nav
+            %li.divider-vertical
+            %li= link_to t("controllers.explore", default: "Przeglądaj"), explore_path
         %ul.nav.pull-right
           - if user_signed_in?
-            %li= link_to t("controllers.explore", default: "Przeglądaj"), explore_path
+            %li= current_user_decorator.profile_link
+            
             %li.divider-vertical
             %li.dropdown
               %a.icon_box.dropdown-toggle(href="#" data-toggle="dropdown")

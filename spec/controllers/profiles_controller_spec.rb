@@ -4,6 +4,13 @@ describe ProfilesController do
 
   describe "as guest" do
     before { as_guest! }
+    
+    it "should redirect to information path" do
+      lecturer = create(:lecturer)
+      get :dashboard, screen_name: lecturer.screen_name
+      response.should redirect_to(information_path(screen_name: lecturer.username))
+    end
+
     it "should show profile page" do
       lecturer = create(:lecturer)
       get :show, screen_name: lecturer.screen_name
@@ -34,6 +41,18 @@ describe ProfilesController do
 
   describe "as student" do
     before { as_normal_user }
+
+    it "should redirect to information page if is not observing lecturer" do
+      lecturer = create(:lecturer)
+      get :dashboard, screen_name: lecturer.screen_name
+      response.should redirect_to(information_path(screen_name: lecturer.username))
+    end
+
+    it "should redirect to timeline path if i visit my profile" do
+      lecturer = build_observed_lecturer
+      get :dashboard, screen_name: lecturer.screen_name
+      response.should redirect_to(timeline_path(screen_name: lecturer.username))
+    end
 
     it "should show profile page" do
       lecturer = create(:lecturer)
@@ -68,17 +87,28 @@ describe ProfilesController do
   describe "as lecturer" do
     before { @lecturer = as_lecturer }
 
+    it "should redirect to information page if i visit other lecturer profile" do
+      lecturer = create(:lecturer)
+      get :dashboard, screen_name: lecturer.screen_name
+      response.should redirect_to(information_path(screen_name: lecturer.username))
+    end
+
+    it "should redirect to timeline path if i visit my profile" do
+      get :dashboard, screen_name: @lecturer.screen_name
+      response.should redirect_to(timeline_path(screen_name: @lecturer.username))
+    end
+
     it "should show profile page for other lecturer" do
       lecturer = create(:lecturer)
       get :show, screen_name: lecturer.screen_name
       response.should be_success
-      assigns(:user).should_not eq(@lecturer)
+      assigns(:lecturer).should_not eq(@lecturer)
     end
 
     it "should show profile for my profile page" do
       get :show, screen_name: @lecturer.screen_name
       response.should be_success
-      assigns(:user).should eq(@lecturer)
+      assigns(:lecturer).should eq(@lecturer)
     end
 
     it "should show settings page" do

@@ -13,8 +13,10 @@ Electurer::Application.routes.draw do
   match "/dashboard" => "dashboard#index", as: :dashboard
   
   scope "/:screen_name", format: :html, constraints: { screen_name: /[^\/]+/ } do
-    match "/" => "profiles#show", as: :profile_page
+    match "/" => "profiles#dashboard", as: :profile_page
+    match "/information" => "profiles#show", as: :information
     resource :friendship
+    resource :timeline
   end
 
   root to: 'welcome#index'
