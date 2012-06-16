@@ -1,0 +1,56 @@
+@import "compass";
+
+$item_min_height: 60px;
+
+.stream {
+  margin-top: 10px;
+  padding-top: 10px;
+
+  .items {
+    margin-top: 10px;
+    border-top: 1px solid #ddd;
+    min-height: 480px;
+
+    .item {
+      border-bottom: 1px solid #DDD;
+      @include transition(fade-in 0.16s linear);
+      padding: 10px;
+
+      .avatar {
+        display: block;
+        position: absolute;
+        width: 50px;
+        height: $item_min_height;
+        img {
+          max-width: 50px;
+          max-height: $item_min_height;
+        }
+      }
+
+      .post {
+        min-height: $item_min_height;
+        margin-left: $item_min_height;
+
+        p {
+          color: #222;
+          font-size: 13px;
+          line-height: 20px;
+        }
+
+
+        .details {
+          color: #AAA;
+          margin-bottom: 5px;
+          .author {
+            font-weight: bold;
+          }
+        }
+
+        .feedback {
+          color: #AAA;
+          font-size: 10px;
+        }
+      }
+    }
+  }
+}

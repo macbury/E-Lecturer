@@ -1,9 +1,9 @@
 - flash.each do |type, msg|
   - if type =~ /notice/i
     .flash.alert{ class: "alert-success" }
-      %button.close(data-dismiss='alert') ×
+      %button.close(data-dismiss='alert') &times;
       = msg
   - else
     .flash.alert{ class: "alert-#{type}" }
-      %button.close(data-dismiss='alert') ×
+      %button.close(data-dismiss='alert') &times;
       = msg

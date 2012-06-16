@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.5'
+gem 'rails', '3.2.6'
 
 group :orm do
   gem 'pg'
@@ -64,6 +64,7 @@ group :test do
   gem 'guard-rspec'
   gem 'guard-livereload'
   gem "guard-spork"
+  gem 'guard-brakeman'
   gem "spork"
   gem 'capybara'
   gem "ruby_gntp"

@@ -17,7 +17,7 @@
             %li= link_to t("controllers.explore", default: "Przeglądaj"), explore_path
         %ul.nav.pull-right
           - if user_signed_in?
-            %li= current_user_decorator.profile_link
+            %li= link_to current_user_decorator.username, '#'
             
             %li.divider-vertical
             %li.dropdown

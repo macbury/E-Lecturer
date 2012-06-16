@@ -12,6 +12,6 @@
  *= require bootstrap_and_overrides
  *= require bootstrap-wysihtml5
  *= require_tree ./classes/
- 
+ *= require_tree ./controller/
  *= require_tree .
  */
