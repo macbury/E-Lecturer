@@ -38,10 +38,3 @@ guard 'rspec', :version => 2, :cli => "--drb", :all_on_start => false, :all_afte
   watch(%r{^app/views/(.+)/.*\.(erb|haml)$})          { |m| "spec/requests/#{m[1]}_spec.rb" }
 end
 
-
-guard 'brakeman', run_on_start: true, output_files: "issues.html" do
-  watch(%r{^app/.+\.(erb|haml|rhtml|rb)$})
-  watch(%r{^config/.+\.rb$})
-  watch(%r{^lib/.+\.rb$})
-  watch('Gemfile')
-end

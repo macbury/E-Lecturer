@@ -2,12 +2,6 @@
   .span12
     .page-header.page-title
       .watch
-        = link_to '#', class: "btn" do
-          %i.icon-qrcode
-          Wizytówka
-        = link_to '#', class: "btn" do
-          %i.icon-envelope
-          Wiadomość
         - if can? :observe, @lecturer
           = link_to @lecturer_decorator.new_friendship_path, class: "btn" do
             %i.icon-eye-open

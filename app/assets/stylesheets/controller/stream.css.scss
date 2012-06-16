@@ -6,6 +6,12 @@ $item_min_height: 60px;
   margin-top: 10px;
   padding-top: 10px;
 
+  .more {
+    display: block;
+    margin-top: 10px;
+    width: 100%;
+  }
+
   .items {
     margin-top: 10px;
     border-top: 1px solid #ddd;
@@ -16,7 +22,11 @@ $item_min_height: 60px;
       @include transition(fade-in 0.16s linear);
       padding: 10px;
 
-      .avatar {
+      .avatar img {
+        @include border-radius(3px);
+      }
+
+      & > .avatar {
         display: block;
         position: absolute;
         width: 50px;
@@ -32,23 +42,66 @@ $item_min_height: 60px;
         margin-left: $item_min_height;
 
         p {
-          color: #222;
+          color:  #333;
           font-size: 13px;
-          line-height: 20px;
+          line-height: 18px;
         }
 
+        .comments {
+          .comment, form {
+            background: #EDEFF4;
+            padding: 5px;
+            margin-bottom: 1px;
+            font-size: 11px;
+            line-height: 14px;
+            min-height: 32px;
+
+            .actions {
+              color: gray;
+              padding-top: 2px;
+            }
+
+            textarea {
+              width: 100%;
+              @include box-sizing(border-box);
+              margin: 0px;
+            }
+
+            .author {
+              font-weight: bold;
+            }
+
+            & > .avatar {
+              height: 32px;
+              width: 32px;
+              position: absolute;
+            }
+
+            & > .body {
+              margin-left: 37px;
+            }
+          }
+          
+        }
 
         .details {
           color: #AAA;
+          font-weight: bold;
           margin-bottom: 5px;
-          .author {
-            font-weight: bold;
+          a {
+            cursor: pointer;
+            color: #3B5998;
+            text-decoration: none;
+            &:hover {
+              text-decoration: underline;
+            }
           }
         }
 
         .feedback {
           color: #AAA;
           font-size: 10px;
+          margin-bottom: 5px;
         }
       }
     }

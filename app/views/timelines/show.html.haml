@@ -5,7 +5,7 @@
     .span8.offset2
       = simple_form_for Post.new, url: timeline_posts_path(screen_name: @lecturer.username) do |f|
         = f.input :body, label: false, input_html: { rows: 3, class: "span8" }, placeholder: "Rozpocznij rozmowę..."
-        .pull-right= f.submit "Udostępnij", class: "btn"
+        .pull-right= f.submit "Udostępnij", class: "btn btn-primary"
   .row
     .span8.items.offset2
       - 10.times do
@@ -18,11 +18,25 @@
               = link_to "macbury", '#', class: "author"
               na 
               = link_to "Tadeusz Grabiński", '#', class: "author"
-              \- 
-              %time około godziny temu
             %p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
             .feedback
               = link_to "Skomentuj", '#'
               \.
               = link_to "Lubie to!", '#'
+              dodane
+              %time około godziny temu
+            .comments
+              - 3.times do
+                .comment
+                  %button.close &times;
+                  = link_to "#", class: "avatar" do
+                    = image_tag "https://secure.gravatar.com/avatar/4e84843ebff0918d72ade21c6eesb1e4?size=32"
+                  .body
+                    = link_to "macbury", '#', class: "author"
+                    Cechy to je jasne nie?
+                    .actions
+                      2 godziny temu
+              %form
+                %textarea{ rows: 1, placeholder: "Napisz komentarz..." }
           .clear
+      %button.more.btn.btn-large.btn-primary Więcej
