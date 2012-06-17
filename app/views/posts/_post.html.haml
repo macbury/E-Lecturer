@@ -1,0 +1,33 @@
+.item
+  = link_to "#", class: "avatar" do
+    = image_tag "https://secure.gravatar.com/avatar/4e84843ebff0918d72ade21c6eesb1e4?size=50"
+  .post
+    .details
+      %button.close{ rel: "tooltip", title: I18n.t("actions.posts.delete", default: "Usuń wpis") } &times;
+      - if stream.lecturer == post.user
+        = post.decorator.author
+      - else
+        = post.decorator.author
+        na 
+        = stream.lecturer.decorator.profile_link
+    = simple_format post.decorator.body
+    .feedback
+      = link_to "Skomentuj", '#'
+      \.
+      = link_to "Lubie to!", '#'
+      dodane
+      = post.decorator.created_at
+    .comments
+      - 0.times do
+        .comment
+          %button.close &times;
+          = link_to "#", class: "avatar" do
+            = image_tag "https://secure.gravatar.com/avatar/4e84843ebff0918d72ade21c6eesb1e4?size=32"
+          .body
+            = link_to "macbury", '#', class: "author"
+            Cechy to je jasne nie?
+            .actions
+              2 godziny temu
+      %form
+        %textarea{ rows: 1, placeholder: "Napisz komentarz..." }
+  .clear

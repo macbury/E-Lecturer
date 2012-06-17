@@ -32,15 +32,16 @@ class ApplicationController < ActionController::Base
     end
 
     def is_not_observing!
-      if current_user.friend_with?(@lecturer)
+      if can? :view_profile, @lecturer
         redirect_to profile_page_path(screen_name: @lecturer.username) 
       end
     end
 
     def is_observing!
-      if (current_user.friend_with?(@lecturer) || current_user == @lecturer)
-        Rails.logger.info "Can access this fanpage"
+      if can? :view_profile, @lecturer
+        Rails.logger.info "Can access this fanpage".bold.green
       else
+        Rails.logger.info "Access denied for this page".bold.red
         flash[:error] = I18n.t("flash.error.save_friendship", default: "Aby mieć dostęp do tego działu musisz obserwować tego wykładowcę!")
         redirect_to profile_page_path(screen_name: @lecturer.username) 
       end

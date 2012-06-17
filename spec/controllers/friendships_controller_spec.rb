@@ -79,12 +79,12 @@ describe FriendshipsController do
 
     it "should redirect to root path for the same lecturer on new friendship" do
       get :new, screen_name: controller.current_user.username
-      response.should redirect_to(root_path)
+      response.should redirect_to(profile_page_path(screen_name: controller.current_user.username))
     end 
 
     it "should redirect to root path for the same lecturer on new friendship" do
       post :create, screen_name: controller.current_user.username
-      response.should redirect_to(root_path)
+      response.should redirect_to(profile_page_path(screen_name: controller.current_user.username))
     end 
   end
 end

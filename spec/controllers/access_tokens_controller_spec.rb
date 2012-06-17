@@ -23,7 +23,7 @@ describe AccessTokensController do
     end 
 
     it "should for DELETE destrou redirect to login page" do
-      delete :destroy
+      delete :destroy, id: 1
       response.should be_redirect
       response.should redirect_to(new_user_session_path)
     end

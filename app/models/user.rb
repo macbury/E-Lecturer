@@ -15,10 +15,8 @@ class User < ActiveRecord::Base
 
   has_and_belongs_to_many :titles
   has_many                :access_tokens, dependent: :destroy
-  has_many                :lecturer_streams, dependent: :destroy, class_name: "Stream", foreign_key: "lecturer_id"
-  has_many                :lecturer_posts, through: :lecturer_streams, source: :streamable, source_type: "Post"
 
-  has_many                :streams, dependent: :destroy
+  has_many                :streams, dependent: :destroy, foreign_key: "lecturer_id"
   has_many                :posts, through: :streams, source: :streamable, source_type: "Post"
 
   validates               :username, presence: true, uniqueness: true, format: /^[a-z\.\-0-9]+$/, length: { in: 3..24 }
@@ -73,6 +71,10 @@ class User < ActiveRecord::Base
     else
       friendship
     end
+  end
+
+  def decorator
+    @decorator ||= UserDecorator.new(self)
   end
 
 end

@@ -1,0 +1,15 @@
+.loader-fader {
+  position: absolute;
+  background: rgba(255,255,255, 0.7);
+  z-index: 1000;
+
+  .icon {
+    margin: 0 auto 10px;
+    opacity: 0.75;
+    background: transparent image-url("ajax-loader.gif") no-repeat center center;
+    background-size: 46px 46px;
+    width: 44px;
+    height: 44px;
+    padding: 1px;
+  }
+}

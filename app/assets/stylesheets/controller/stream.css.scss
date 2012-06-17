@@ -48,6 +48,9 @@ $item_min_height: 60px;
         }
 
         .comments {
+          form {
+            display: none;
+          }
           .comment, form {
             background: #EDEFF4;
             padding: 5px;

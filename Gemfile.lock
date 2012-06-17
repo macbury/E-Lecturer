@@ -226,6 +226,8 @@ GEM
       activesupport (= 3.2.6)
       bundler (~> 1.0)
       railties (= 3.2.6)
+    rails_autolink (1.0.9)
+      rails (~> 3.1)
     railties (3.2.6)
       actionpack (= 3.2.6)
       activesupport (= 3.2.6)
@@ -356,6 +358,7 @@ DEPENDENCIES
   quiet_assets
   rack-livereload
   rails (= 3.2.6)
+  rails_autolink
   rmagick
   rspec-rails
   ruby_gntp

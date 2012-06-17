@@ -1,0 +1,3 @@
+http://documentcloud.github.com/docsplit/#changes
+packages:
+graphicsmagick poppler-utils tesseract-ocr pdftk openoffice.org openoffice.org-java-common

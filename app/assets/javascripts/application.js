@@ -15,4 +15,5 @@
 //= require twitter/bootstrap
 //= require wysihtml5
 //= require_tree ./libs/
+//= require_tree ./controllers/
 //= require_tree .

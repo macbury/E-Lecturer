@@ -1,0 +1,1 @@
+ %button.more.btn.btn-large.btn-primary Więcej

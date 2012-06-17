@@ -4,6 +4,9 @@ class TimelinesController < ApplicationController
 
   def show
     @current_tab = :timeline
+    authorize! :timeline, @lecturer
+
+    @streams       = @lecturer.streams.order("streams.created_at DESC").includes(:streamable)
   end
 
 end

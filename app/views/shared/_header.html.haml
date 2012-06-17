@@ -5,8 +5,7 @@
         %span.icon-bar
         %span.icon-bar
         %span.icon-bar
-      %a.brand.pull-left{ href: root_path }
-        E-Wykładowca
+      %a.brand.pull-left{ href: root_path } E-Wykładowca
       .nav-collapse
         %form.navbar-search.pull-left
           %input.search-query( type="text" placeholder="Szukaj..." )
@@ -17,7 +16,6 @@
         %ul.nav.pull-right
           - if user_signed_in?
             %li= link_to current_user_decorator.username, '#'
-            
             %li.divider-vertical
             %li.dropdown
               %a.icon_box.dropdown-toggle(href="#" data-toggle="dropdown")

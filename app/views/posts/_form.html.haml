@@ -1,0 +1,4 @@
+= simple_form_for post, url: timeline_posts_path(screen_name: @lecturer.username), html: { id: nil } do |f|
+  = f.input :body, label: false, input_html: { rows: 3, class: "span8" }, placeholder: "Rozpocznij rozmowę..."
+  .pull-right= f.submit "Udostępnij", class: "btn btn-primary"
+  .clear
