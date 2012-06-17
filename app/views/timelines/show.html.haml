@@ -4,7 +4,7 @@
   .row  
     .span8.offset2#new_post_form= render partial: "posts/form", locals: { post: Post.new }
   .row
-    .span8.items.offset2
+    .span8.items.offset2{ data: { last_id: @last_stream_id } }
       - @streams.each do |stream|
         = render partial: stream.streamable, locals: { stream: stream }
 

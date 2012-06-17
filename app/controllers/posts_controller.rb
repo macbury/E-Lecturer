@@ -10,7 +10,9 @@ class PostsController < ApplicationController
 
     if @post.save
       @lecturer.posts << @post
-      render partial: "form", locals: { post: Post.new }, status: :ok
+      form_html = render_to_string(partial: "form", locals: { post: Post.new })
+      post_html = render_to_string(partial: @post, locals: { stream: @post.stream }, formats: [:html])
+      render json: { form: form_html, post: post_html }, status: :ok
     else
       render partial: "form", locals: { post: @post }, status: :unprocessable_entity
     end

@@ -1,6 +1,6 @@
 .item
   = link_to "#", class: "avatar" do
-    = image_tag "https://secure.gravatar.com/avatar/4e84843ebff0918d72ade21c6eesb1e4?size=50"
+    = image_tag post.user.picture.url(:thumbnail)
   .post
     .details
       %button.close{ rel: "tooltip", title: I18n.t("actions.posts.delete", default: "Usuń wpis") } &times;
