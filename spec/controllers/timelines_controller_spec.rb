@@ -39,7 +39,7 @@ describe TimelinesController do
     end
   end
 
-  context "as not observing lecturer" do
+  context "as other lecturer" do
     before { as_lecturer! }
     
     it "should redirect to root path for index page" do
@@ -51,7 +51,7 @@ describe TimelinesController do
     end
   end
 
-  context "as I as lecturer" do
+  context "as lecturer" do
     before { as_lecturer! }
     
     it "should redirect to root path for index page" do
