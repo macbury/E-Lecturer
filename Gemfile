@@ -22,6 +22,9 @@ group :other do
   gem "rmagick"
   gem "unicorn"
   gem "colored"
+  gem 'yajl-ruby'
+  gem "jbuilder"
+  gem "gon"
 end
 
 group :views do
@@ -34,7 +37,6 @@ group :views do
   gem "wicked"
   gem "sanitize"
   gem "rails_autolink"
-  gem "rabl"
 end
 
 group :assets do

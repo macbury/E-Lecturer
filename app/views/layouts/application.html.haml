@@ -5,7 +5,7 @@
     %meta(name="viewport" content="width=device-width, initial-scale=1.0")
     %title= content_for?(:title) ? yield(:title) : "E-Wykładowca"
     = csrf_meta_tags
-    
+      
     = stylesheet_link_tag "application", :media => "all"
 
   %body{ class: ["controller_#{controller.controller_name}", "action_#{controller.action_name}"].join(" ") }
@@ -17,5 +17,6 @@
         All rights reserved 2012
         %b E-Wykładowca
 
+    = include_gon namespace: "Data", camel_case: true
     = javascript_include_tag "https://maps.googleapis.com/maps/api/js?sensor=false"
     = javascript_include_tag "application"

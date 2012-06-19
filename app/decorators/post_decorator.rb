@@ -11,4 +11,6 @@ class PostDecorator < ApplicationDecorator
   def author
     model.user.decorator.profile_link    
   end
+
+
 end

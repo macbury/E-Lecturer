@@ -1,11 +1,11 @@
-gid = 0
+GID = 0
 
 build_plugin = (element, trigger) ->
   element = $(element)
   uid = element.data("loader-uid")
   if uid == null
-    uid = gid
-    gid += 1
+    uid = GID
+    GID += 1
     element.data("loader-uid", uid)
 
 

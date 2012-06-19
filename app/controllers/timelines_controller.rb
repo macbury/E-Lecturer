@@ -6,11 +6,10 @@ class TimelinesController < ApplicationController
     @current_tab = :timeline
     authorize! :timeline, @lecturer
 
-    @streams        = @lecturer.streams.order("streams.created_at DESC").includes({ :streamable => :user }, :lecturer)
-
+    @streams              = @lecturer.streams.page(params[:page]).per(10).order("streams.created_at DESC").includes({ :streamable => :user }, :lecturer)
     respond_to do |format|
-      format.html
-      format.json { render partial: "timelines/stream", collection: @streams }
+      format.html { gon.jbuilder as: :streams }
+      format.json { render action: "index" }
     end
   end
 

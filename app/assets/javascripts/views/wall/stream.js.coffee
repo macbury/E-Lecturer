@@ -6,4 +6,4 @@ class UI.Stream extends Backbone.View
     @render()
     
   render: =>
-    $(@el).html(model.get("html"))
+    $(@el).html(@model.get("html"))
