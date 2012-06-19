@@ -6,19 +6,11 @@ class TimelinesController < ApplicationController
     @current_tab = :timeline
     authorize! :timeline, @lecturer
 
-    @streams        = @lecturer.streams.order("streams.created_at DESC").includes({ :streamable => :user }, :lecturer).all
-    @last_stream_id = @streams.first.id if @streams.size > 0
+    @streams        = @lecturer.streams.order("streams.created_at DESC").includes({ :streamable => :user }, :lecturer)
 
     respond_to do |format|
       format.html
-      format.json do
-        output = []
-        @streams.each do |stream|
-          post_html = render_to_string(partial: stream.streamable, locals: { stream: stream }, formats: [:html])
-          output << { html: post_html, created_at: @post.stream.created_at, id: stream.id }
-        end
-        render json: output
-      end
+      format.json { render partial: "timelines/stream", collection: @streams }
     end
   end
 

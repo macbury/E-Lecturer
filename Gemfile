@@ -34,6 +34,7 @@ group :views do
   gem "wicked"
   gem "sanitize"
   gem "rails_autolink"
+  gem "rabl"
 end
 
 group :assets do
