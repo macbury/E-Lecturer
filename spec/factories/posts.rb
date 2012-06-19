@@ -2,6 +2,6 @@
 
 FactoryGirl.define do
   factory :post do
-    body "MyText"
+    sequence(:body) { |index| "Wiadomość numer #{index}" }
   end
 end
