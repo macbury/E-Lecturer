@@ -14,6 +14,9 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require wysihtml5
+//= require ./config/config
 //= require_tree ./libs/
 //= require_tree ./controllers/
+//= require_tree ./views/
+//= require ./config/boot
 //= require_tree .

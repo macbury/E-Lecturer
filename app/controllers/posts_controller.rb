@@ -12,7 +12,7 @@ class PostsController < ApplicationController
       @lecturer.posts << @post
       form_html = render_to_string(partial: "form", locals: { post: Post.new })
       post_html = render_to_string(partial: @post, locals: { stream: @post.stream }, formats: [:html])
-      render json: { form: form_html, post: post_html }, status: :ok
+      render json: { form: form_html, stream: { html: post_html, created_at: @post.stream.created_at, id: stream.id } }, status: :ok
     else
       render partial: "form", locals: { post: @post }, status: :unprocessable_entity
     end

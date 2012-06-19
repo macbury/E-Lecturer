@@ -12,11 +12,12 @@ class TimelinesController < ApplicationController
     respond_to do |format|
       format.html
       format.json do
-        output = {}
+        output = []
         @streams.each do |stream|
-          output[stream.id] = render_to_string(partial: stream.streamable, locals: { stream: stream }, formats: [:html])
+          post_html = render_to_string(partial: stream.streamable, locals: { stream: stream }, formats: [:html])
+          output << { html: post_html, created_at: @post.stream.created_at, id: stream.id }
         end
-        render json: { prepend: output } 
+        render json: output
       end
     end
   end
