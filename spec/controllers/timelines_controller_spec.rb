@@ -21,7 +21,21 @@ describe TimelinesController do
       get :index, screen_name: lecturer.username
 
       response.should be_redirect
-      response.should redirect_to(profile_page_path(screen_name: lecturer.screen_name))
+      response.should redirect_to(profile_page_path(screen_name: lecturer.username))
+    end
+  end
+
+  context "as observing student" do
+    before { as_student! }
+    
+    it "should not redirect to root path for index page" do
+      lecturer = create(:lecturer)
+      observe_lecturer!(lecturer)
+      get :index, screen_name: lecturer.username
+
+      response.should be_success
+      response.should render_template("index")
+      response.should_not redirect_to(profile_page_path(screen_name: lecturer.username))
     end
   end
 
@@ -33,7 +47,19 @@ describe TimelinesController do
       get :index, screen_name: lecturer.username
 
       response.should be_redirect
-      response.should redirect_to(profile_page_path(screen_name: lecturer.screen_name))
+      response.should redirect_to(profile_page_path(screen_name: lecturer.username))
+    end
+  end
+
+  context "as I as lecturer" do
+    before { as_lecturer! }
+    
+    it "should redirect to root path for index page" do
+      get :index, screen_name: controller.current_user.username
+
+      response.should be_success
+      response.should render_template("index")
+      response.should_not redirect_to(profile_page_path(screen_name: controller.current_user.username))
     end
   end
 end

@@ -52,9 +52,7 @@ describe FriendshipsController do
 
     it "should redirect to profile page if observing lecturer" do
       lecturer = create(:lecturer)
-      
-      access_token = lecturer.access_tokens.create(FactoryGirl.attributes_for(:access_token_for_form))
-      controller.current_user.connect_with!(lecturer, access_token: access_token.code)
+      observe_lecturer!(lecturer)
 
       get :new, screen_name: lecturer.username
 
