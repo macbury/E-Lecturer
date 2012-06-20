@@ -39,6 +39,7 @@ class UI.Wall extends Backbone.View
       statusCode:
         200: (rsp) => @handle_post_form(rsp)
         422: (rsp) => @handle_post_form({ form: rsp.responseText })
+        500: (rsp) => ServerError(rsp)
 
   addAll: =>
     @items.empty()

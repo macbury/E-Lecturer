@@ -7,12 +7,13 @@ class UI.Stream extends Backbone.View
   initialize: (options) =>
     @model = options.model
     @model.on "remove", @remove
+    @model.on "sync", alert("removed")
     @render()
 
   confirmTrash: (event) =>
     event.preventDefault()
     if confirm("Czy na pewno chcesz usunąć ten wpis?")
-      alert("OK :P")
+      @model.destroy()
   
   remove: =>
     $(@el).slideUp 500, => $(@el).remove()
