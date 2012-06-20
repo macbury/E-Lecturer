@@ -12,7 +12,7 @@ Electurer::Application.routes.draw do
   match "/explore" => "explore#index", as: :explore
   match "/dashboard" => "dashboard#index", as: :dashboard
   
-  scope "/:screen_name", format: :html, constraints: { screen_name: /[A-Z\.0-9]+/i } do
+  scope "/:screen_name", constraints: { screen_name: /[A-Z\.0-9]+/i } do
     match "/" => "profiles#dashboard", as: :profile_page
     match "/information" => "profiles#show", as: :information
     resource :friendship

@@ -3,14 +3,15 @@ class UI.Wall extends Backbone.View
 
   events:
     "submit #new_post_form form": "send"
-    "click .items .more"        : "nextPage"
+    "click .more"        : "nextPage"
   initialize: =>
     @form_container     = @$('#new_post_form')
     @form               = @form_container.find("form")
     @items              = @$(".items")
-    @more_button        = @items.find(".more")
+    @more_button        = @$(".more")
     @streamsCollection  = new Collection.Streams(Data.streams)
     @streamsCollection.on "add", @appendOne
+    @more_button.hide()
     @addAll()
 
   handle_post_form: (response) =>
@@ -55,7 +56,7 @@ class UI.Wall extends Backbone.View
     event.preventDefault()
     Data.pagination.page += 1
     @more_button.button("loading")
-    $.getJSON @more_button.attr("href"), { page: Data.pagination.page }, (response) =>
+    $.getJSON @more_button.attr("href"), { page: Data.pagination.page, format: "json" }, (response) =>
       @streamsCollection.add(response)
       @updateUI()
 

@@ -2,12 +2,12 @@ class UI.Stream extends Backbone.View
   model: null
 
   events:
-    "click button.close": "confirmTrash"
+    "click a.close": "confirmTrash"
 
   initialize: (options) =>
     @model = options.model
     @model.on "remove", @remove
-    @model.on "sync", alert("removed")
+    #@model.on "sync", alert("removed")
     @render()
 
   confirmTrash: (event) =>
@@ -20,4 +20,5 @@ class UI.Stream extends Backbone.View
 
   render: =>
     $(@el).html(@model.get("html"))
+    @$("time").timeago()
     @$(".have_tooltip").tooltip()

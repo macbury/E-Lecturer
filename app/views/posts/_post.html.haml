@@ -3,7 +3,8 @@
     = image_tag post.user.picture.url(:thumbnail)
   .post
     .details
-      %button.close.have_tooltip{ rel: "tooltip", title: I18n.t("actions.posts.delete", default: "Usuń wpis") } &times;
+      - if can? :destroy, stream
+        %a.close.have_tooltip{ rel: "tooltip", title: I18n.t("actions.posts.delete", default: "Usuń wpis"), href: timeline_path(screen_name: stream.lecturer.username, id: stream.id) } &times;
       - if stream.lecturer == post.user
         = post.decorator.author
       - else
