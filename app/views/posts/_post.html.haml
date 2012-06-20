@@ -3,7 +3,7 @@
     = image_tag post.user.picture.url(:thumbnail)
   .post
     .details
-      %button.close{ rel: "tooltip", title: I18n.t("actions.posts.delete", default: "Usuń wpis") } &times;
+      %button.close.have_tooltip{ rel: "tooltip", title: I18n.t("actions.posts.delete", default: "Usuń wpis") } &times;
       - if stream.lecturer == post.user
         = post.decorator.author
       - else
