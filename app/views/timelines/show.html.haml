@@ -1,19 +1,28 @@
 .row
   .span3
     = render partial: "profiles/sidebar"
-  .span7
+  .span6
     .stream
       .row  
-        .span7
+        .span6
           .page-header
             %h3 Nowy post
           #new_post_form= render partial: "posts/form", locals: { post: Post.new }
       .row
-        .span7
+        .span6
           .items
             %p= tt("p.loading", "Wczytywanie wpisów... Proszę czekać...")
           %a.more.btn.btn-large.btn-primary{ href: @lecturer_decorator.timeline_path } Więcej
-  .span2
+  .span3
     .page-header
-      %h3 Pasek Aktywności
-
+      %h4 Aktywność
+    .activity
+      %ul.unstyled
+        - 20.times do
+          %li
+            = image_tag @lecturer_decorator.picture.url(:thumbnail)
+            %p
+              %b Antyweb 
+              No ciekawe czy i fora internetowe pójdą z duchem czasu i zdecydują się na zmianę...
+    %p
+      %a.btn.btn-mini{ href: "#" } Zobacz wszystkie

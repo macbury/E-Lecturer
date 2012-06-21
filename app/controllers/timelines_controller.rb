@@ -8,7 +8,7 @@ class TimelinesController < ApplicationController
     authorize! :timeline, @lecturer
     @page = (params[:page] || 1).to_i
 
-    @streams  = @lecturer.streams.page(params[:page]).per(StreamsPerPage).order("streams.created_at DESC").includes({ :streamable => :user }, :lecturer)
+    @streams  = @lecturer.streams.is_post.page(params[:page]).per(StreamsPerPage).order("streams.created_at DESC").includes({ :streamable => :user }, :lecturer)
 
     respond_to do |format|
       format.html do
