@@ -6,7 +6,12 @@ class UserDecorator < ApplicationDecorator
     if name.empty?
       name = model.username
     else
-      name = name.join(" ") + " (#{model.username})"
+      if model.lecturer?
+        name = name.join(" ")
+      else
+        name = name.join(" ") + " (#{model.username})"
+      end
+      
     end
 
   end

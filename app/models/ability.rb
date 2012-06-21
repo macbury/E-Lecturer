@@ -7,7 +7,7 @@ class Ability
     can :upgrade_step_finish, User
     can :create, Post
     can :destroy, Stream do |stream|
-      stream.lecturer_id == current_user || stream.streamable.user_id == current_user.id
+      stream.lecturer_id == current_user.id || stream.streamable.user_id == current_user.id
     end
 
     if current_user.lecturer?

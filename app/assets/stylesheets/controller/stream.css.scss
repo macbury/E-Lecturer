@@ -3,8 +3,6 @@
 $item_min_height: 60px;
 
 .stream {
-  margin-top: 10px;
-  padding-top: 10px;
 
   .more {
     display: block;
@@ -18,7 +16,7 @@ $item_min_height: 60px;
     min-height: 480px;
 
     .item {
-      border-bottom: 1px solid #DDD;
+      border-bottom: 1px solid #E9E9E9;
       @include transition(fade-in 0.16s linear);
       padding: 10px;
 

@@ -1,0 +1,9 @@
+@import "compass";
+.sidebar {
+  .poster {
+    img {
+      @include border-radius(4px);  
+    }
+    
+  }
+}

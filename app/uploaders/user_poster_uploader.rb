@@ -34,7 +34,9 @@ class UserPosterUploader < CarrierWave::Uploader::Base
   version :poster do
     process :resize_to_fill => [150, 200]
   end
-
+  version :sidebar do
+    process :resize_to_fill => [480, 320]
+  end
   def extension_white_list
     %w(jpg jpeg gif png)
   end

@@ -1,0 +1,21 @@
+.sidebar
+  .poster= image_tag @lecturer.picture.url(:sidebar)
+  .page-header
+    %h4
+      = @lecturer_decorator.full_name
+      %br/
+      %small= @lecturer_decorator.university
+  %ul.nav.nav-pills.nav-stacked
+    = tab_link :information, @lecturer_decorator.information_path, "icon-question-sign"
+    = tab_link :timeline, @lecturer_decorator.timeline_path, 'icon-list'
+    = tab_link :contact, '#', 'icon-envelope'
+    %li.nav-header Sekcje
+    %li
+      = link_to '#' do
+        %i.icon-book
+        Literatura
+    - ["Pozostale materialy dydaktyczne", "Sciagi, samouczki", "Prezentacje", "Linki", "Przykladowe projekty i prace domowe", "Moje publikacje"].each do |name|
+      %li
+        =link_to '#' do
+          %i.icon-folder-close
+          = name

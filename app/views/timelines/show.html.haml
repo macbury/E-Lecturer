@@ -1,11 +1,19 @@
-= render partial: "profiles/header"
-
-.stream
-  .row  
-    .span8.offset2#new_post_form= render partial: "posts/form", locals: { post: Post.new }
-  .row
-    .span8.offset2
-      .items
-        %p= tt("p.loading", "Wczytywanie wpisów... Proszę czekać...")
-      %a.more.btn.btn-large.btn-primary{ href: @lecturer_decorator.timeline_path } Więcej
+.row
+  .span3
+    = render partial: "profiles/sidebar"
+  .span7
+    .stream
+      .row  
+        .span7
+          .page-header
+            %h3 Nowy post
+          #new_post_form= render partial: "posts/form", locals: { post: Post.new }
+      .row
+        .span7
+          .items
+            %p= tt("p.loading", "Wczytywanie wpisów... Proszę czekać...")
+          %a.more.btn.btn-large.btn-primary{ href: @lecturer_decorator.timeline_path } Więcej
+  .span2
+    .page-header
+      %h3 Pasek Aktywności
 

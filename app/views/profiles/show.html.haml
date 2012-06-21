@@ -1,29 +1,35 @@
-= render partial: "profiles/header"
-
 .row
-  .span3.offset1
-    .page-header
-      %h3 Zdjęcie
-
-    .thumbnail= image_tag @lecturer.picture.url(:poster)
-  .span4
-    .page-header
-      %h3 Informacje podstawowe:
-    %dl.dl-horizontal
-      %dt Imię
-      %dd= @lecturer_decorator.first_name
-      %dt Nazwisko
-      %dd= @lecturer_decorator.last_name
-      %dt Tytuły
-      %dd= @lecturer_decorator.titles
-      %dt Telefon
-      %dd= @lecturer_decorator.phone
-      %dt Uczelnia
-      %dd= @lecturer_decorator.university
-      %dt Data urodzenia
-      %dd= @lecturer_decorator.birth_date
-.row
-  .span10.offset1
-    .page-header
-      %h3 O mnie:
-    = @lecturer_decorator.about
+  .span3
+    = render partial: "profiles/sidebar"
+  .span9
+    .row
+      .span9
+        .page-header
+          .watch
+            - if can? :observe, @lecturer
+              = link_to @lecturer_decorator.new_friendship_path, class: "btn" do
+                %i.icon-eye-open
+                Obserwuj
+            - if can? :edit, @lecturer
+              = link_to basic_info_profile_path, class: "btn" do
+                %i.icon-pencil
+                = tt("edit_profile", "Edytuj profil")
+          %h3 Informacje podstawowe:
+        %dl.dl-horizontal
+          %dt Imię
+          %dd= @lecturer_decorator.first_name
+          %dt Nazwisko
+          %dd= @lecturer_decorator.last_name
+          %dt Tytuły
+          %dd= @lecturer_decorator.titles
+          %dt Telefon
+          %dd= @lecturer_decorator.phone
+          %dt Uczelnia
+          %dd= @lecturer_decorator.university
+          %dt Data urodzenia
+          %dd= @lecturer_decorator.birth_date
+    .row
+      .span9
+        .page-header
+          %h3 O mnie:
+        = @lecturer_decorator.about
