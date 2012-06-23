@@ -31,7 +31,7 @@ describe PostsController do
     
     it "should be success for valid post data" do
       lecturer = create(:lecturer)
-      observe_lecuter(lecturer)
+      observe_lecturer!(lecturer)
 
       post :create, screen_name: lecturer.username, post: FactoryGirl.attributes_for(:post)
 
@@ -40,7 +40,7 @@ describe PostsController do
 
     it "should not be success for valid post data" do
       lecturer = create(:lecturer)
-      observe_lecuter(lecturer)
+      observe_lecturer!(lecturer)
 
       post :create, screen_name: lecturer.username, post: {}
 
@@ -64,16 +64,12 @@ describe PostsController do
     before { as_lecturer! }
     
     it "should be success for valid post data" do
-      observe_lecuter(lecturer)
-
       post :create, screen_name: controller.current_user.username, post: FactoryGirl.attributes_for(:post)
 
       response.should be_success
     end
 
     it "should not be success for valid post data" do
-      observe_lecuter(lecturer)
-
       post :create, screen_name: controller.current_user.username, post: {}
 
       response.should_not be_success

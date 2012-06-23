@@ -16,9 +16,8 @@ Electurer::Application.routes.draw do
     match "/" => "profiles#dashboard", as: :profile_page
     match "/information" => "profiles#show", as: :information
     resource :friendship
-    resource :timeline do
-      resources :posts
-    end
+    resources :timelines
+    resources :posts
   end
 
   root to: 'welcome#index'

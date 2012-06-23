@@ -13,8 +13,6 @@ group :authorization do
   gem "devise"
   gem "cancan"
   gem "activeadmin"
-  #gem "omniauth"
-  #gem "omniauth-facebook"
 end
 
 group :other do

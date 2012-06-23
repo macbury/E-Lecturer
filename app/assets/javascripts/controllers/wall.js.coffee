@@ -13,6 +13,7 @@ class UI.Wall extends Backbone.View
     @streamsCollection.on "add", @appendOne
     @more_button.hide()
     @addAll()
+    @updateUI()
 
   handle_post_form: (response) =>
     @form.loader(false)
@@ -49,6 +50,7 @@ class UI.Wall extends Backbone.View
     @updateUI()
   appendOne:  (model) => @items.append(model.view.el)
   prependOne: (model) => 
+    $(model.view.el).hide()
     @items.prepend(model.view.el)
     $(model.view.el).slideDown(500)
 
@@ -62,6 +64,7 @@ class UI.Wall extends Backbone.View
 
   updateUI: =>
     @more_button.button("reset")
+    @form.find("textarea").autogrow(min_height: 64)
     if Data.pagination.page_count > Data.pagination.page
       @more_button.show()
     else

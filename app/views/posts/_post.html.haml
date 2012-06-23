@@ -9,13 +9,15 @@
         = post.decorator.author
       - else
         = post.decorator.author
-        na 
+        od: 
         = stream.lecturer.decorator.profile_link
-    = simple_format post.decorator.body
+    .body= simple_format post.decorator.body
     .feedback
-      = link_to "Skomentuj", '#'
+      = link_to "Skomentuj", '#', class: "comments_button"
       \.
-      = link_to "Lubie to!", '#'
+      = link_to "Obserwuj", '#', class: "observe_button"
+      \.
+      = link_to "Link", timeline_path(screen_name: stream.lecturer.username, id: stream.id), target: "_blank"
       dodane
       = post.decorator.created_at
     .comments

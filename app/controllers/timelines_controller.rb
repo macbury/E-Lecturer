@@ -3,7 +3,7 @@ class TimelinesController < ApplicationController
   StreamsPerPage = 10
   before_filter :authenticate_user!, :preload_lecturer!, :is_observing!
 
-  def show
+  def index
     @current_tab = :timeline
     authorize! :timeline, @lecturer
     @page = (params[:page] || 1).to_i
@@ -17,6 +17,15 @@ class TimelinesController < ApplicationController
       end
       format.json
     end
+  end
+
+  def show
+    @current_tab = :timeline
+    @stream  = @lecturer.streams.find(params[:id])
+    authorize! :show, @stream
+
+    gon.pagination = { page: 1, per_page: TimelinesController::StreamsPerPage, total_count: 1, page_count: 1 }
+    gon.jbuilder as: :streams
   end
 
   def destroy

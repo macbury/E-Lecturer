@@ -1,0 +1,28 @@
+.row
+  .span3
+    = render partial: "profiles/sidebar"
+  .span6
+    .stream
+      .row  
+        .span6
+          .page-header
+            %h3 Nowy post
+          #new_post_form= render partial: "posts/form", locals: { post: Post.new }
+      .row
+        .span6
+          .items
+            %p= tt("p.loading", "Wczytywanie wpisów... Proszę czekać...")
+          %a.more.btn.btn-large.btn-primary{ href: @lecturer_decorator.timeline_path } Więcej
+  .span3
+    .page-header
+      %h4 
+        %a.btn.btn-mini.pull-right{ href: "#" } Zobacz wszystkie
+        Aktywność
+    .activity
+      %ul.unstyled
+        - 20.times do
+          %li
+            = image_tag @lecturer_decorator.picture.url(:thumbnail)
+            %p
+              %b Antyweb 
+              No ciekawe czy i fora internetowe pójdą z duchem czasu i zdecydują się na zmianę...

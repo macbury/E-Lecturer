@@ -16,7 +16,7 @@ class ProfilesController < ApplicationController
 
   def dashboard
     if user_signed_in? && (current_user.friend_with?(@lecturer) || current_user == @lecturer)
-      redirect_to timeline_path(screen_name: @lecturer.username)
+      redirect_to timelines_path(screen_name: @lecturer.username)
     else
       redirect_to information_path(screen_name: @lecturer.username)
     end

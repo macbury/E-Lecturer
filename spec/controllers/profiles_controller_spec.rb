@@ -51,7 +51,7 @@ describe ProfilesController do
     it "should redirect to timeline path if i visit my profile" do
       lecturer = build_observed_lecturer
       get :dashboard, screen_name: lecturer.screen_name
-      response.should redirect_to(timeline_path(screen_name: lecturer.username))
+      response.should redirect_to(timelines_path(screen_name: lecturer.username))
     end
 
     it "should show profile page" do
@@ -95,7 +95,7 @@ describe ProfilesController do
 
     it "should redirect to timeline path if i visit my profile" do
       get :dashboard, screen_name: @lecturer.screen_name
-      response.should redirect_to(timeline_path(screen_name: @lecturer.username))
+      response.should redirect_to(timelines_path(screen_name: @lecturer.username))
     end
 
     it "should show profile page for other lecturer" do
