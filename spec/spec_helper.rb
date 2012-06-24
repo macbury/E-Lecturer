@@ -20,6 +20,7 @@ Spork.prefork do
     config.include Devise::TestHelpers, type: :controller
     config.include SignHelper,          type: :controller
     config.include UserHelper,          type: :controller
+    config.include StreamHelper,        type: :controller
     
     config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
@@ -35,11 +36,13 @@ Spork.prefork do
     end
 
     config.before(:each) do
+      Rails.logger.info "Starging db clean".bold.blue
       DatabaseCleaner.start
     end
 
     config.after(:each) do
       DatabaseCleaner.clean
+      Rails.logger.info "Cleaning db".bold.blue
     end
   end
 

@@ -1,8 +1,5 @@
 = simple_form_for post, url: posts_path(screen_name: @lecturer.username), html: { id: nil } do |f|
   = f.input :body, label: false, input_html: { rows: 3, class: "span9" }, placeholder: "Rozpocznij rozmowę..."
-  .btn-group.pull-left
-    %a.btn.active Wszystkie
-    %a.btn Wykładowca
-    %a.btn Studenci
+
   .pull-right= f.submit "Udostępnij", class: "btn btn-primary"
   .clear

@@ -7,14 +7,15 @@ class Ability
     can :upgrade_step_finish, User
     can :create, Post
 
-    can [:create, :destroy], Comment do |comment|
-      comment.user_id == current_user.id || comment.commentable.stream.lecturer_id == current_user.id
-    end
+    unless current_user.new_record?
+      can [:create, :destroy], Comment do |comment|
+        comment.user_id == current_user.id || comment.commentable.stream.lecturer_id == current_user.id
+      end
 
-    can [:show, :destroy], Stream do |stream|
-      stream.lecturer_id == current_user.id || stream.streamable.user_id == current_user.id
+      can [:show, :destroy], Stream do |stream|
+        stream.lecturer_id == current_user.id || stream.streamable.user_id == current_user.id
+      end
     end
-
     if current_user.lecturer?
       can :manage, AccessToken
       can [:view_profile, :timeline], User do |lecturer|
