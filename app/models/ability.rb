@@ -11,8 +11,8 @@ class Ability
       can [:create, :destroy], Comment do |comment|
         comment.user_id == current_user.id || comment.commentable.stream.lecturer_id == current_user.id
       end
-
-      can [:show, :destroy], Stream do |stream|
+      can :show, Stream
+      can [:destroy], Stream do |stream|
         stream.lecturer_id == current_user.id || stream.streamable.user_id == current_user.id
       end
     end
@@ -24,6 +24,9 @@ class Ability
     end
 
     if current_user.student?
+      can :dashboard, User do |user| 
+        user == current_user
+      end
       can :observe, User do |user|
         user != current_user && !current_user.friend_with?(user)
       end

@@ -2,6 +2,20 @@
   .span9
     .page-header
       %h2= tt("page-header.h2", "Aktualności")
+    .stream
+      .items
+        .row
+          .span7.offset1
+            %br/
+            .progress.progress-striped.active
+              .bar{ style: "width: 100%" }
+            %p= tt("p.loading", "Wczytywanie wpisów... Proszę czekać...")
+      %a.more.btn.btn-large.btn-primary{ href: dashboard_path } Więcej
   .span3
-    %h4= tt("page-header.h4", "Obserwowani")
-    %p Brak wykładowców
+    .page-header
+      %h3= tt("page-header.h4", "Obserwowani wykładowcy")
+    - if @lecturers.empty?
+      %p Brak wykładowców
+    %ul
+      - @lecturers.each do |lecturer|
+        %li= lecturer.decorator.profile_link

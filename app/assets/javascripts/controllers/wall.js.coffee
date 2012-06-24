@@ -71,5 +71,4 @@ class UI.Wall extends Backbone.View
       @more_button.hide()
 
 
-$.for "#new_post_form", ->
-  Interface.Wall = new UI.Wall()
+$.for ".stream", -> Interface.Wall = new UI.Wall()
