@@ -34,9 +34,9 @@ class TimelinesController < ApplicationController
 
     respond_to do |format|
       if @stream.destroy
-        format.json { render json: true }
+        format.json { render json: true, status: :ok }
       else
-        format.json { render json: false }
+        format.json { render json: false, status: :unprocessable_entity }
       end
     end
   end

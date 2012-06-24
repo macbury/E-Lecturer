@@ -15,8 +15,6 @@
     .feedback
       = link_to "Skomentuj", '#', class: "comments_button"
       \.
-      = link_to "Obserwuj", '#', class: "observe_button"
-      \.
       = link_to "Link", timeline_path(screen_name: stream.lecturer.username, id: stream.id), target: "_blank"
       dodane
       = post.decorator.created_at

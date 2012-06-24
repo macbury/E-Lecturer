@@ -31,10 +31,10 @@ ActiveRecord::Schema.define(:version => 20120624094838) do
   end
 
   create_table "comments", :force => true do |t|
-    t.integer  "commentable_id"
-    t.string   "commentable_type"
-    t.text     "body"
-    t.integer  "user_id"
+    t.integer  "commentable_id",   :null => false
+    t.string   "commentable_type", :null => false
+    t.text     "body",             :null => false
+    t.integer  "user_id",          :null => false
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
   end
@@ -66,9 +66,9 @@ ActiveRecord::Schema.define(:version => 20120624094838) do
   add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
 
   create_table "streams", :force => true do |t|
-    t.integer  "lecturer_id"
-    t.integer  "streamable_id"
-    t.string   "streamable_type"
+    t.integer  "lecturer_id",     :null => false
+    t.integer  "streamable_id",   :null => false
+    t.string   "streamable_type", :null => false
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
   end
