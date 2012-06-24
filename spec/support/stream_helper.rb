@@ -12,4 +12,8 @@ module StreamHelper
     post_on_lecturer_wall_as!(lecturer, controller.current_user)
   end
 
+  def create_stream_object!(klass, lecturer)
+    self.send("#{klass}_on_lecturer_wall!", lecturer)
+  end
+
 end
