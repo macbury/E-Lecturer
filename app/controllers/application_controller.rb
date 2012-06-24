@@ -2,7 +2,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  helper_method :lecturer?, :current_user_decorator
+  helper_method :lecturer?, :current_user_decorator, :current_lecturer
   
   rescue_from CanCan::AccessDenied do |exception|
     Rails.logger.info "Unauthorized access: #{exception.message.bold}".red
@@ -29,6 +29,10 @@ class ApplicationController < ActionController::Base
     def preload_lecturer!
       @lecturer           = User.is_lecturer.find_by_username!(params[:screen_name])
       @lecturer_decorator = UserDecorator.new(@lecturer)
+    end
+
+    def current_lecturer
+      @lecturer           ||= User.is_lecturer.find_by_username!(params[:screen_name])
     end
 
     def is_not_observing!

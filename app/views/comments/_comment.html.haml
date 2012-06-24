@@ -1,0 +1,7 @@
+.comment
+  = link_to "#", class: "avatar" do
+    = image_tag comment.user.decorator.picture.url(:thumbnail)
+  .body
+    = link_to comment.user.decorator.full_name, '#', class: "author"
+    = comment.decorator.body
+    .actions= comment.decorator.created_at

@@ -1,5 +1,4 @@
 Electurer::Application.routes.draw do
-
   resources :access_tokens
   resources :user_upgrade
   devise_for :users
@@ -17,7 +16,9 @@ Electurer::Application.routes.draw do
     match "/information" => "profiles#show", as: :information
     resource :friendship
     resources :timelines
-    resources :posts
+    resources :posts do
+      resources :comments
+    end
   end
 
   root to: 'welcome#index'

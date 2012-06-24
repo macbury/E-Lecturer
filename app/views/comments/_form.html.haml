@@ -1,0 +1,2 @@
+= simple_form_for comment, url: polymorphic_path([commetable, comment], screen_name: lecturer.screen_name), html: { id: nil } do |f|
+  = f.input :body, label: false, input_html: { rows: 1, placeholder: "Napisz komentarz...", class: "comment_body" }

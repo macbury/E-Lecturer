@@ -9,7 +9,7 @@
         = post.decorator.author
       - else
         = post.decorator.author
-        od: 
+        u wykładowcy: 
         = stream.lecturer.decorator.profile_link
     .body= simple_format post.decorator.body
     .feedback
@@ -21,16 +21,6 @@
       dodane
       = post.decorator.created_at
     .comments
-      - 0.times do
-        .comment
-          %button.close &times;
-          = link_to "#", class: "avatar" do
-            = image_tag "https://secure.gravatar.com/avatar/4e84843ebff0918d72ade21c6eesb1e4?size=32"
-          .body
-            = link_to "macbury", '#', class: "author"
-            Cechy to je jasne nie?
-            .actions
-              2 godziny temu
-      %form
-        %textarea{ rows: 1, placeholder: "Napisz komentarz..." }
+      = render partial: post.comments
+      .commentable_form= render partial: "comments/form", locals: { comment: Comment.new, commetable: post, lecturer: stream.lecturer }
   .clear

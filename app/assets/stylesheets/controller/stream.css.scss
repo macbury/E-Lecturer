@@ -6,7 +6,16 @@ $item_min_height: 60px;
   min-height: 64px;
 }
 
+.new_comment textarea {
+  min-height: 28px;
+}
+
+
 .stream {
+
+  .control-group {
+    margin: 0px;
+  }
 
   .more {
     display: block;
@@ -85,6 +94,10 @@ $item_min_height: 60px;
 
             & > .body {
               margin-left: 37px;
+            }
+
+            p {
+              margin: 0px;
             }
           }
           
