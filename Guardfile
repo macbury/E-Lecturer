@@ -1,4 +1,3 @@
-notification :gntp, :sticky => true, :host => '192.168.0.108'
 interactor   :on
 guard 'livereload' do
   watch(%r{app/views/.+\.(erb|haml|slim)})
@@ -38,3 +37,16 @@ guard 'rspec', :version => 2, :cli => "--drb", :all_on_start => false, :all_afte
   watch(%r{^app/views/(.+)/.*\.(erb|haml)$})          { |m| "spec/requests/#{m[1]}_spec.rb" }
 end
 
+
+### Guard::Resque
+#  available options:
+#  - :task (defaults to 'resque:work' if :count is 1; 'resque:workers', otherwise)
+#  - :verbose / :vverbose (set them to anything but false to activate their respective modes)
+#  - :trace
+#  - :queue (defaults to "*")
+#  - :count (defaults to 1)
+#  - :environment (corresponds to RAILS_ENV for the Resque worker)
+guard 'resque', :environment => 'development' do
+  watch(%r{^app/(.+)\.rb$})
+  watch(%r{^lib/(.+)\.rb$})
+end
