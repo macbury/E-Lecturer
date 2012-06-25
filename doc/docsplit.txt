@@ -12,3 +12,5 @@ file parsing flow:
 7. Generating first page preview(510 width)
 8. Getting metadata(mimetype, size, extension, creationdate, name)
 9. Store as plain text file in cache for text indexing
+
+https://github.com/karmi/tire-contrib/

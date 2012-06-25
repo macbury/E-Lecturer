@@ -64,6 +64,7 @@ group :development, :test do
   gem 'sextant'
   gem 'annotator'
   gem 'rack-livereload' 
+  gem "railroady"
 end
 
 group :test do
