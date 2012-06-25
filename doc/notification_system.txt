@@ -2,14 +2,15 @@ Każdy model który może wygenerować powiadomienie ma asocjacje do modelu Obse
 Observer
   id:integer
   observable_type:string, null:false
-  observable_id:integer, null: false
-  user_id:integer, null: false
+  observable_id:integer,  null: false
+  user_id:integer,        null: false
 
 Po dokonaniu odpowiedniej akcji (tworzenie, zapis, edycja itp) model na którym zachodzi do każdego użytkownika przez model obserer tworzy rekord notification z wiadomością
 
 Notification
   id:integer
-  user_id:integer,   null: false
-  action_key:string, null: false
+  user_id:integer,        null: false
+  action_key:string,      null: false
+  message:text
   notifiable_type:string, null: false
-  notifiable_id:string, null: false
+  notifiable_id:string,   null: false

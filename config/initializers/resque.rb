@@ -1,6 +1,7 @@
+require "resque/server"
 Resque::Server.use(Rack::Auth::Basic) do |user, password|
-  user == ResqueYettings.admin.user && password == ResqueYettings.admin.password
+  user == ResqueYetting.admin[:user] && password == ResqueYetting.admin[:password]
 end
 
-Resque.redis           = ResqueYettings.redis.url 
-Resque.redis.namespace = ResqueYettings.redis.namespace
+Resque.redis           = ResqueYetting.redis[:url] 
+Resque.redis.namespace = ResqueYetting.redis[:namespace]
