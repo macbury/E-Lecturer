@@ -1,4 +1,4 @@
-.comment
+.comment{ id: "comment_#{comment.id}" }
   = link_to "#", class: "avatar" do
     = image_tag comment.user.decorator.picture.url(:thumbnail)
   .body
