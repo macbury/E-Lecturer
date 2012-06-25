@@ -1,0 +1,14 @@
+defaults: &defaults
+  scope: email
+
+development: &development
+  <<: *defaults
+  admin:
+    user: admin
+    password: admin
+  redis:
+    url: localhost:6379
+    namespace: electurer-dev
+
+test:
+  <<: *development

@@ -1,4 +1,5 @@
 Electurer::Application.routes.draw do
+  mount Resque::Server.new, at: "/worker"
   resources :access_tokens
   resources :user_upgrade
   devise_for :users

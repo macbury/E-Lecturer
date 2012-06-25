@@ -2,6 +2,14 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.6'
 
+group :worker do
+  gem "resque"
+  gem "docsplit"
+  gem "resque-scheduler"
+  gem "resque-async-method"
+  gem "resque-history"
+end
+
 group :orm do
   gem 'pg'
   gem "ancestry"
@@ -62,11 +70,13 @@ group :test do
   gem "fuubar"
   gem 'database_cleaner'
   gem 'shoulda-matchers'
+  gem 'resque_spec'
   gem "nyan-cat-formatter"
   gem 'guard-rspec'
   gem 'guard-livereload'
   gem "guard-spork"
   gem 'guard-brakeman'
+  gem 'guard-resque'
   gem "spork"
   gem 'capybara'
   gem "ruby_gntp"
