@@ -1,3 +1,13 @@
 http://documentcloud.github.com/docsplit/#changes
 packages:
 graphicsmagick poppler-utils tesseract-ocr pdftk openoffice.org openoffice.org-java-common
+
+file parsing flow:
+1. upload file
+2. Mark file as processing state
+3. resque worker recives it
+4. Carrierwave recives file and store it in secure location under public/files
+5. Generating pdf preview, storing it as version
+6. Reciving text from preview and storing it in elastic search index
+7. Generating first page preview(510 width)
+8. Getting metadata(mimetype, size, extension, creationdate, name)
