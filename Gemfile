@@ -65,6 +65,11 @@ group :development, :test do
   gem 'annotator'
   gem 'rack-livereload' 
   gem "railroady"
+  gem 'guard-rspec'
+  gem 'guard-livereload'
+  gem "guard-spork"
+  gem 'guard-brakeman'
+  gem 'guard-resque'
 end
 
 group :test do
@@ -73,11 +78,6 @@ group :test do
   gem 'shoulda-matchers'
   gem 'resque_spec'
   gem "nyan-cat-formatter"
-  gem 'guard-rspec'
-  gem 'guard-livereload'
-  gem "guard-spork"
-  gem 'guard-brakeman'
-  gem 'guard-resque'
   gem "spork"
   gem 'capybara'
   gem "ruby_gntp"
