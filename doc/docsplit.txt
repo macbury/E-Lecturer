@@ -33,4 +33,13 @@ Folder
   name: string, null: false
   ancsetry: string
 
+Document
+  folder_id:integer, null: false
+  name:string, null: false
+  size:integer
+  status:integer, default: Document::Pending(Pending, Done, Infected)
+  mime_type:string
+  file:string, null: false
+  user_id:integer, null: false # reference to user that submited it
+
   
