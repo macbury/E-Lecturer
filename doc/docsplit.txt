@@ -36,6 +36,8 @@ Folder
 Document
   folder_id:integer, null: false
   name:string, null: false
+  extension:string
+  description:string
   size:integer
   status:integer, default: Document::Pending(Pending, Done, Infected)
   mime_type:string
