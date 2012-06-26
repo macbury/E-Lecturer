@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120624094838) do
+ActiveRecord::Schema.define(:version => 20120626214637) do
 
   create_table "access_tokens", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -47,6 +47,24 @@ ActiveRecord::Schema.define(:version => 20120624094838) do
   end
 
   add_index "friendships", ["user_id", "friend_id"], :name => "index_friendships_on_user_id_and_friend_id", :unique => true
+
+  create_table "notifications", :force => true do |t|
+    t.integer  "user_id",         :null => false
+    t.string   "action_key"
+    t.text     "message"
+    t.string   "notifiable_type", :null => false
+    t.string   "notifiable_id",   :null => false
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
+  create_table "observers", :force => true do |t|
+    t.string   "observable_type", :null => false
+    t.integer  "observable_id",   :null => false
+    t.integer  "user_id",         :null => false
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
 
   create_table "posts", :force => true do |t|
     t.text     "body"

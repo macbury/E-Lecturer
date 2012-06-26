@@ -7,24 +7,11 @@ Spork.prefork do
   require File.expand_path("../../config/environment", __FILE__)
   require 'rspec/rails'
   require 'rspec/autorun'
-  require 'capybara/rspec'
-  require 'capybara/rails'
   require "cancan/matchers"
-  require 'headless'
   require 'carrierwave/test/matchers'
   
   Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 
-  Capybara.default_selector  = :css
-  Capybara.javascript_driver = :webkit
-  Capybara.default_wait_time = 10
-
-  if Capybara.current_driver == :rack_test
-    require 'headless'
-
-    headless = Headless.new(:display => 666, :destroy_on_exit => true)
-    headless.start
-  end
 
   RSpec.configure do |config|
     config.mock_with :rspec
@@ -33,7 +20,7 @@ Spork.prefork do
     config.include Devise::TestHelpers, type: :controller
     config.include SignHelper,          type: :controller
     config.include UserHelper,          type: :controller
-    config.include StreamHelper,        type: :controller
+    config.include StreamHelper
     
     config.fixture_path = "#{::Rails.root}/spec/fixtures"
 

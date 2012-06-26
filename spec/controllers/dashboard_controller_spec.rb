@@ -15,7 +15,7 @@ describe DashboardController do
     before { as_student! }
     it "should render index action" do
       get :index
-      response.should render_tempalte("index")
+      response.should render_template("index")
       response.should be_success
     end
   end

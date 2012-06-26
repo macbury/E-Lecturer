@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.6'
 
 group :worker do
+  gem "redis"
   gem "resque"
   gem "docsplit"
   gem "resque-scheduler"
@@ -60,7 +61,6 @@ end
 
 group :development, :test do
   gem 'rspec-rails'
-  gem 'capybara'
   gem "factory_girl_rails"
   gem 'sextant'
   gem 'annotator'
@@ -71,6 +71,7 @@ group :development, :test do
   gem "guard-spork"
   gem 'guard-brakeman'
   gem 'guard-resque'
+  gem 'guard-unicorn'
 end
 
 group :test do
@@ -80,8 +81,5 @@ group :test do
   gem 'resque_spec'
   gem "nyan-cat-formatter"
   gem "spork"
-  gem 'launchy'
   gem "ruby_gntp"
-  gem 'capybara-webkit'
-  gem 'headless'
 end

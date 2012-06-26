@@ -16,4 +16,12 @@ module StreamHelper
     self.send("#{klass}_on_lecturer_wall!", lecturer)
   end
 
+  def add_comment_to_object!(object, author)
+    comment = object.comments.build(FactoryGirl.attributes_for(:comment))
+    comment.user = author
+    comment.save!
+
+    comment
+  end
+
 end
