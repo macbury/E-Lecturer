@@ -8,6 +8,7 @@ Spork.prefork do
   require 'rspec/rails'
   require 'rspec/autorun'
   require 'capybara/rspec'
+  require 'capybara/rails'
   require "cancan/matchers"
   require 'headless'
   require 'carrierwave/test/matchers'
