@@ -31,6 +31,8 @@ crontab
 Folder
   lecturer_id:integer, null: false
   name: string, null: false
+  student_can_write: false
+  student_can_read: false
   ancsetry: string
 
 Document
