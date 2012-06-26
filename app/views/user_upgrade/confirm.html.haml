@@ -2,7 +2,8 @@
   .span12
     .page-header
       %h2= tt("step1.page-header.h2", "Zostań wykładowcą")
-    %p= tt("upgrade.p", "Dzięki temu kreatorowi będziesz mógł swój profil zmienić w profil wykładowcy z zarezerwowanym adresem url, stroną profilową i zarządzaniem grup. Kliknij w link poniżej aby kontynuować!")
+    .well
+      %p= tt("upgrade.p", "Dzięki temu kreatorowi będziesz mógł swój profil zmienić w profil wykładowcy z zarezerwowanym adresem url, stroną profilową i zarządzaniem grup. Kliknij w link poniżej aby kontynuować!")
     = simple_form_for self.current_user, url: wizard_path do |f|
       = f.submit "Przejdź dalej", class: "btn btn-primary"
 

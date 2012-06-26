@@ -60,6 +60,7 @@ end
 
 group :development, :test do
   gem 'rspec-rails'
+  gem 'capybara'
   gem "factory_girl_rails"
   gem 'sextant'
   gem 'annotator'
@@ -79,6 +80,8 @@ group :test do
   gem 'resque_spec'
   gem "nyan-cat-formatter"
   gem "spork"
-  gem 'capybara'
+  gem 'launchy'
   gem "ruby_gntp"
+  gem 'capybara-webkit'
+  gem 'headless'
 end

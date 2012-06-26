@@ -2,7 +2,8 @@
   .span12
     .page-header
       %h2= tt("screen_name.page-header.h2", "Zostań wykładowcą")
-    %p= tt("screen_name.p", "Tutaj musisz podać podstawowe wymagane dane do aktywacji konta wykładowcy.")
+    .well
+      %p= tt("screen_name.p", "Tutaj musisz podać podstawowe wymagane dane do aktywacji konta wykładowcy.")
     = simple_form_for self.current_user, url: wizard_path, html: { class: "form-horizontal" } do |f|
       = f.hidden_field :become_lecturer, value: true
       = f.input :first_name

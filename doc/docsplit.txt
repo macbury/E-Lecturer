@@ -6,11 +6,45 @@ file parsing flow:
 1. upload file
 2. Mark file as processing state
 3. resque worker recives it
-4. Carrierwave recives file and store it in secure location under public/files
-5. Generating pdf preview, storing it as version
-6. Reciving text from preview and storing it in elastic search index
-7. Generating first page preview(510 width)
-8. Getting metadata(mimetype, size, extension, creationdate, name)
-9. Store as plain text file in cache for text indexing
-
+5. Carrierwave recives file and store it in secure location under public/files
+6. Generating pdf preview, storing it as version
+7. Reciving text from preview and storing it in elastic search index
+8. Generating first page preview(510 width)
+9. Getting metadata(mimetype, size, extension, creationdate, name)
+10. Store as plain text file in cache for text indexing
+12. Mark as done
+11. Scanning for viruses
+  a) if virus then mark as infected and set infection type message
 https://github.com/karmi/tire-contrib/
+
+
+https://github.com/eagleas/clamav
+
+deb http://ppa.launchpad.net/ubuntu-clamav/ppa/ubuntu hardy main
+
+sudo apt-get install clamav clamav-base clamav-daemon clamav-freshclam
+
+crontab
+  codziennie o 24 sprawdź bazę wirusów
+  codziennie o 1:00 skanuj wszystkie pliki w poszukiwaniu wirusów
+
+Folder
+  lecturer_id:integer, null: false
+  name: string, null: false
+  student_can_write: false
+  student_can_read: false
+  ancsetry: string
+
+Document
+  folder_id:integer, null: false
+  name:string, null: false
+  extension:string
+  description:string
+  size:integer
+  status:integer, default: Document::Pending(Pending, Done, Infected)
+  infection_type:string
+  mime_type:string
+  file:string, null: false
+  user_id:integer, null: false # reference to user that submited it
+
+  

@@ -61,9 +61,7 @@ describe TimelinesController do
     before { as_student! }
     
     it "should show index action" do
-      lecturer = create(:lecturer)
-      
-      observe_lecturer!(lecturer)
+      lecturer = build_observed_lecturer
       post_on_lecturer_wall!(lecturer)
 
       get :index, screen_name: lecturer.username
@@ -74,9 +72,7 @@ describe TimelinesController do
     end
 
     it "should show post by lecturer" do
-      lecturer = create(:lecturer)
-
-      observe_lecturer!(lecturer)
+      lecturer = build_observed_lecturer
       @post = post_on_lecturer_wall!(lecturer)
 
       get :show, screen_name: lecturer.username, id: @post.stream.id
@@ -87,9 +83,7 @@ describe TimelinesController do
     end
 
     it "should delete stream" do
-      lecturer = create(:lecturer)
-
-      observe_lecturer!(lecturer)
+      lecturer = build_observed_lecturer
       @post = post_on_lecturer_wall!(lecturer)
 
       delete :destroy, screen_name: lecturer.username, id: @post.stream.id, format: :json
