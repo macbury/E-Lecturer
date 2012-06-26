@@ -6,15 +6,15 @@ file parsing flow:
 1. upload file
 2. Mark file as processing state
 3. resque worker recives it
-4. Scanning for viruses
-  a) if virus then mark as infected and set infection type message
 5. Carrierwave recives file and store it in secure location under public/files
 6. Generating pdf preview, storing it as version
 7. Reciving text from preview and storing it in elastic search index
 8. Generating first page preview(510 width)
 9. Getting metadata(mimetype, size, extension, creationdate, name)
 10. Store as plain text file in cache for text indexing
-
+12. Mark as done
+11. Scanning for viruses
+  a) if virus then mark as infected and set infection type message
 https://github.com/karmi/tire-contrib/
 
 
@@ -42,6 +42,7 @@ Document
   description:string
   size:integer
   status:integer, default: Document::Pending(Pending, Done, Infected)
+  infection_type:string
   mime_type:string
   file:string, null: false
   user_id:integer, null: false # reference to user that submited it
