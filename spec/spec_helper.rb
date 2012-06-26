@@ -9,9 +9,21 @@ Spork.prefork do
   require 'rspec/autorun'
   require 'capybara/rspec'
   require "cancan/matchers"
+  require 'headless'
   require 'carrierwave/test/matchers'
   
   Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
+
+  Capybara.default_selector  = :css
+  Capybara.javascript_driver = :webkit
+  Capybara.default_wait_time = 10
+
+  if Capybara.current_driver == :rack_test
+    require 'headless'
+
+    headless = Headless.new(:display => 666, :destroy_on_exit => true)
+    headless.start
+  end
 
   RSpec.configure do |config|
     config.mock_with :rspec
@@ -36,7 +48,7 @@ Spork.prefork do
     end
 
     config.before(:each) do
-      Rails.logger.info "Starging db clean".bold.blue
+      Rails.logger.info "Starting db clean".bold.blue
       DatabaseCleaner.start
     end
 

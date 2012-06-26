@@ -32,10 +32,9 @@ describe CommentsController do
 
       context "as observing student" do
         before { as_student! }
-        
+
         it "should be success for valid post data" do
-          lecturer = create(:lecturer)
-          observe_lecturer!(lecturer)
+          lecturer = build_observed_lecturer
           klass_object = create_stream_object!(klass, lecturer)
 
           post :create, screen_name: lecturer.username, "#{klass}_id".to_sym => klass_object.id, comment: FactoryGirl.attributes_for(:comment)
@@ -44,8 +43,7 @@ describe CommentsController do
         end
 
         it "should be unsuccess for invalid post data" do
-          lecturer = create(:lecturer)
-          observe_lecturer!(lecturer)
+          lecturer = build_observed_lecturer
           klass_object = create_stream_object!(klass, lecturer)
 
           post :create, screen_name: lecturer.username, "#{klass}_id".to_sym => klass_object.id, comment: {}

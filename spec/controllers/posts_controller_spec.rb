@@ -30,8 +30,7 @@ describe PostsController do
     before { as_student! }
     
     it "should be success for valid post data" do
-      lecturer = create(:lecturer)
-      observe_lecturer!(lecturer)
+      lecturer = build_observed_lecturer
 
       post :create, screen_name: lecturer.username, post: FactoryGirl.attributes_for(:post)
 
@@ -39,8 +38,7 @@ describe PostsController do
     end
 
     it "should not be success for valid post data" do
-      lecturer = create(:lecturer)
-      observe_lecturer!(lecturer)
+      lecturer = build_observed_lecturer
 
       post :create, screen_name: lecturer.username, post: {}
 
