@@ -20,6 +20,7 @@ class User < ActiveRecord::Base
   has_many                :posts, through: :streams, source: :streamable, source_type: "Post"
   has_many                :comments, dependent: :destroy
   has_many                :observers, dependent: :delete_all
+  has_many                :notifications, dependent: :delete_all
 
   validates               :username, presence: true, uniqueness: true, format: /^[a-z\.\-0-9]+$/, length: { in: 3..24 }
   validates               :first_name, :last_name, presence: true, if: :screen_name_step?
