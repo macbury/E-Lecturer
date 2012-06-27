@@ -14,6 +14,7 @@ describe Comment do
 
     comment   = add_comment_to_object!(post, author)
     author.observers.count.should eq(1)
+    CthulhuWorker.should have_queued(comment.class.to_s, comment.id, "create")
   end
 
   it "should start unique observing after creatng a comment for parent post by lecturer" do
@@ -26,6 +27,7 @@ describe Comment do
 
     comment   = add_comment_to_object!(post, lecturer)
     lecturer.observers.count.should eq(1)
+    CthulhuWorker.should have_queued(comment.class.to_s, comment.id, "create")
   end
 
 end

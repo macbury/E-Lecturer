@@ -2,11 +2,6 @@ interactor   :on
 
 guard :unicorn, :daemonize => false, :config_file => "config/unicorn.rb"
 
-#guard 'resque', :environment => 'development' do
-#  watch(%r{^app/(.+)\.rb$})
-#  watch(%r{^lib/(.+)\.rb$})
-#end
-
 guard 'livereload' do
   watch(%r{app/views/.+\.(erb|haml|slim)})
   watch(%r{app/helpers/.+\.rb})
@@ -43,4 +38,8 @@ guard 'rspec', :version => 2, :cli => "--drb", :all_on_start => false, :all_afte
   watch('app/controllers/application_controller.rb')  { "spec/controllers" }
   # Capybara request specs
   watch(%r{^app/views/(.+)/.*\.(erb|haml)$})          { |m| "spec/requests/#{m[1]}_spec.rb" }
+end
+
+guard 'resque', :environment => 'development' do
+  watch(%r{^app/workers/\.rb$})
 end

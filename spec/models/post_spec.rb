@@ -10,6 +10,7 @@ describe Post do
     post      = post_on_lecturer_wall_as!(lecturer, author)
 
     author.observers.count.should eq(1)
+    CthulhuWorker.should have_queued(post.class.to_s, post.id, "create")
   end
 
   it "should start unique observing after creatng a post by lecturer" do
@@ -17,5 +18,6 @@ describe Post do
     post      = post_on_lecturer_wall_as!(lecturer, lecturer)
 
     lecturer.observers.count.should eq(1)
+    CthulhuWorker.should have_queued(post.class.to_s, post.id, "create")
   end
 end

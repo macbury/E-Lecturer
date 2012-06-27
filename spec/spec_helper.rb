@@ -19,7 +19,7 @@ Spork.prefork do
     config.include FactoryGirl::Syntax::Methods
     config.include Devise::TestHelpers, type: :controller
     config.include SignHelper,          type: :controller
-    config.include UserHelper,          type: :controller
+    config.include UserHelper
     config.include StreamHelper
     
     config.fixture_path = "#{::Rails.root}/spec/fixtures"

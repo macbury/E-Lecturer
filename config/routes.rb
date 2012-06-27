@@ -1,3 +1,4 @@
+require 'resque-history/server'
 Electurer::Application.routes.draw do
   mount Resque::Server.new, at: "/worker"
   resources :access_tokens

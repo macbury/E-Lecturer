@@ -3,8 +3,7 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.6'
 
 group :worker do
-  gem "redis"
-  gem "resque"
+  gem "resque", "~> 1.20.0"
   gem "docsplit"
   gem "resque-scheduler"
   gem "resque-async-method"
@@ -82,4 +81,5 @@ group :test do
   gem "nyan-cat-formatter"
   gem "spork"
   gem "ruby_gntp"
+  gem 'resque_spec'
 end
