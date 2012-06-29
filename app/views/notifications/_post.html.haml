@@ -1,0 +1,2 @@
+= link_to notification.notifiable.decorator.timeline_path do
+  = t("notifications.#{notification.notifiable_type.downcase}.#{notification.action_key}", author: notification.notifiable.user.decorator.full_name, lecturer: notification.notifiable.stream.lecturer.decorator.full_name )

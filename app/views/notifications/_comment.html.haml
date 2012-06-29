@@ -1,0 +1,2 @@
+= link_to notification.notifiable.commentable.decorator.timeline_path do
+  = t("notifications.#{notification.notifiable_type.downcase}.#{notification.action_key}", commenter: notification.notifiable.user.decorator.full_name, post_author: notification.notifiable.commentable.user.decorator.full_name )

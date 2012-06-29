@@ -86,4 +86,8 @@ class UserDecorator < ApplicationDecorator
   def information_path
     h.information_path(screen_name: model.screen_name)
   end
+
+  def notifications
+    model.notifications.order("created_at DESC").includes(notifiable: [:user]).limit(10)
+  end
 end

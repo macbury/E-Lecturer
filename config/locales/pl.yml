@@ -1,4 +1,9 @@
 pl:
+  notifications:
+    post:
+      create: "%{author} dodał wpis na ścianę %{lecturer}"
+    comment:
+      create: "%{commenter} dodał komentarz do wpisu %{post_author}"
   controllers:
     profiles:
       tabs:

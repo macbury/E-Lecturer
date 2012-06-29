@@ -12,5 +12,8 @@ class PostDecorator < ApplicationDecorator
     model.user.decorator.profile_link    
   end
 
+  def timeline_path
+    h.timeline_path(screen_name: model.stream.lecturer.username, id: model.stream.id)
+  end
 
 end
