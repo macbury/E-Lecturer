@@ -1,35 +1,7 @@
+Copyright (C) 2013 Buras Arkadiusz
 
-.page-header.page-title
-  .watch
-    - if can? :observe, @lecturer
-      = link_to @lecturer_decorator.new_friendship_path, class: "btn" do
-        %i.icon-eye-open
-        Obserwuj
-    - if can? :edit, @lecturer
-      = link_to basic_info_profile_path, class: "btn" do
-        %i.icon-pencil
-        = tt("edit_profile", "Edytuj profil")
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
-  %h2 
-    .avatar.pull-left
-      .cover{ style: "background-image: url('#{@lecturer.picture.url(:thumbnail)}')" }
-    = @lecturer_decorator.full_name
-.subnav
-  %ul.nav.nav-pills.columns5
-    = tab_link :information, @lecturer_decorator.information_path
-    = tab_link :timeline, @lecturer_decorator.timeline_path
-    = tab_link :repository, '#'
-    %li.dropdown
-      %a.dropdown-toggle(data-toggle="dropdown" href="#")
-        = I18n.t("controllers.profiles.tabs.sections")
-        %b.caret
-      %ul.dropdown-menu
-        %li= link_to "Zalecana literatura", '#'
-        %li= link_to "Pozostale materialy dydaktyczne", '#'
-        %li= link_to "Sciagi, samouczki", '#'
-        %li= link_to "Prezentacje", '#'
-        %li= link_to "Linki", '#'
-        %li= link_to "Przykladowe projekty i prace domowe", '#'
-        %li= link_to "Moje publikacje", '#'
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
-    = tab_link :contact, '#'
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
